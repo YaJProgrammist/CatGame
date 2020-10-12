@@ -9,9 +9,11 @@ class Flying : PlayerMovingBehavior
     {
         velocityVector = new Vector2(1.5f, 0);
         airJumpYStep = 1.5f;
+
+        rigidbody.velocity = velocityVector;
     }
 
-    public override void Move()
+    public override sealed void Move()
     {
         if (Input.GetButton("Jump"))
         {

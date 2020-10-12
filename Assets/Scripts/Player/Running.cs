@@ -7,10 +7,10 @@ class Running : PlayerMovingBehavior
     public Running(Rigidbody2D rigidbody) : base (rigidbody)
     {
         velocityVector = new Vector2(1.5f, 0);
+        currentRigidbody.velocity = velocityVector;
     }
 
-    public override void Move()
+    public override sealed void Move()
     {
-        currentRigidbody.velocity = velocityVector;
     }
 }
