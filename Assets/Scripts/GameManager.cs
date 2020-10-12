@@ -59,12 +59,6 @@ public class GameManager : MonoBehaviour
     {
         player.Reset();
         sectorManager.Reset();
-
-
-        // TODO coins earned take from bonus manager
-
-
-        // TODO refresh bonus manager coins count + health controller lives count
     }
 
     private void GameOver()
