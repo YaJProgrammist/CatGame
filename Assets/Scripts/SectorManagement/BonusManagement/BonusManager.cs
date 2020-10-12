@@ -48,7 +48,7 @@ public class BonusManager : MonoBehaviour
     public void FinishGame()
     {
         FinalCoinsNumberText.text = PickedUpCoinsNumber.ToString();
-        // TODO save earned coins
+        DataHolder.SaveEarnedCoins(PickedUpCoinsNumber);
     }
 
     private BonusPreset GetRandomBonusPreset()

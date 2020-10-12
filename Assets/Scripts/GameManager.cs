@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour // TODO singleton ?
 {
     [SerializeField]
     private Player player;
@@ -22,10 +23,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Canvas storeCanvas;
 
+    [SerializeField]
+    private Text currentCoinsNumberText;
+
     void Start()
     {
         HealthController playerHealthController = player.GetComponent<HealthController>();
         playerHealthController.NoLivesLeft.AddListener(GameOver);
+        RefreshMainMenuData();
     }
 
     public void StartGame()
@@ -42,6 +47,7 @@ public class GameManager : MonoBehaviour
         gameOverCanvas.gameObject.SetActive(false);
         mainMenuCanvas.gameObject.SetActive(true);
 
+        RefreshMainMenuData();
         ResetGame();
     }
 
@@ -53,6 +59,11 @@ public class GameManager : MonoBehaviour
     public void CloseStore()
     {
         storeCanvas.gameObject.SetActive(false);
+    }
+
+    private void RefreshMainMenuData()
+    {
+        currentCoinsNumberText.text = DataHolder.GetCurrentCoinsNumber().ToString();
     }
 
     private void ResetGame()
