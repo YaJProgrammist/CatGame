@@ -104,7 +104,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 80
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 8
     m_MaxSize: 80
@@ -552,8 +552,9 @@ GameObject:
   - component: {fileID: 4763589313220660994}
   - component: {fileID: 4763589313220660992}
   - component: {fileID: 4763589313220660995}
+  - component: {fileID: 8808592075951071606}
   m_Layer: 5
-  m_Name: ItemPanel
+  m_Name: BoosterItemPanelPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -577,10 +578,10 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 153}
-  m_SizeDelta: {x: 0, y: -650.3429}
+  m_SizeDelta: {x: 1920, y: 429.6571}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4763589313220660992
 CanvasRenderer:
@@ -604,7 +605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.13883947, g: 0.35504982, b: 0.754717, a: 0.8}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -619,3 +620,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8808592075951071606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4763589313220660997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280ac70b5e747be47a88d8a941168aa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Booster
+  itemSourceSprite: {fileID: 21300000, guid: a0f045920db206840a6bc806667dfb85, type: 3}
+  itemTargetImage: {fileID: 573210963}
+  costText: {fileID: 1942019026}
+  titleText: {fileID: 230357227}
+  Cost: 50

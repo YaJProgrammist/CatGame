@@ -8,10 +8,9 @@ public class Store : MonoBehaviour
     private RectTransform storeItemListScrollViewContent;
 
     [SerializeField]
-    private RectTransform storeItemPrefab;
+    private List<StoreItem> itemPrefabsList;
 
-    [SerializeField]
-    private List<StoreItem> itemList;
+    private float scaleFactor;
 
     void Start()
     {
@@ -20,18 +19,29 @@ public class Store : MonoBehaviour
 
     private void DisplayAllItems()
     {
-        foreach(StoreItem item in itemList)
+        if (itemPrefabsList.Count == 0)
         {
-            for (int i = 0; i < 5; i++)
-            {
-                DisplayItem(item); // TODO
-            }
+            return;
+        }
+
+        scaleFactor = itemPrefabsList.Count * itemPrefabsList[0].GetComponent<RectTransform>().rect.height / storeItemListScrollViewContent.rect.height;
+
+        Vector2 currentContentLocalScale = storeItemListScrollViewContent.transform.localScale;
+        currentContentLocalScale.y = currentContentLocalScale.y * scaleFactor;
+        storeItemListScrollViewContent.transform.localScale = currentContentLocalScale;
+
+        foreach (StoreItem item in itemPrefabsList)
+        {
+             DisplayItem(item);
         }
     }
 
     private void DisplayItem(StoreItem item)
     {
-        RectTransform currentStoreItem = Instantiate(storeItemPrefab, storeItemListScrollViewContent);
+        StoreItem currentStoreItem = Instantiate(item, storeItemListScrollViewContent);
 
+        Vector2 currentStoreItemLocalScale = currentStoreItem.transform.localScale;
+        currentStoreItemLocalScale.y /= scaleFactor;
+        currentStoreItem.transform.localScale = currentStoreItemLocalScale;
     }
 }

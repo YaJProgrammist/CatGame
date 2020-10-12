@@ -53,12 +53,14 @@ public class GameManager : MonoBehaviour // TODO singleton ?
 
     public void OpenStore()
     {
+        mainMenuCanvas.gameObject.SetActive(false);
         storeCanvas.gameObject.SetActive(true);
     }
 
     public void CloseStore()
     {
         storeCanvas.gameObject.SetActive(false);
+        mainMenuCanvas.gameObject.SetActive(true);
     }
 
     private void RefreshMainMenuData()
