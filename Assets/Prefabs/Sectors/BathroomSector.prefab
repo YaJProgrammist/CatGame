@@ -233,8 +233,7 @@ GameObject:
   - component: {fileID: 2938782316243172840}
   - component: {fileID: 2938782316243172841}
   - component: {fileID: 2938782316243172842}
-  - component: {fileID: 2563335104615953165}
-  - component: {fileID: 5425103248817445791}
+  - component: {fileID: 3435404685114253327}
   m_Layer: 0
   m_Name: BathroomSector
   m_TagString: Untagged
@@ -286,7 +285,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -320,7 +319,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2563335104615953165
+--- !u!114 &3435404685114253327
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -329,22 +328,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2938782316243172836}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab26091187aa14b4db3020b065c24805, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EndTriggered:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &5425103248817445791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2938782316243172836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab26091187aa14b4db3020b065c24805, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fd0ddc200130b642b9567c3c78370ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   EndTriggered:
@@ -420,4 +404,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0652b0f69711e46b0b1f05642f231f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSector: {fileID: 2563335104615953165}
+  currentSector: {fileID: 3435404685114253327}

@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class SectorManager : MonoBehaviour // TODO class menu sector + class game sector + different Anactivate()
+public class SectorManager : MonoBehaviour 
 {
     [SerializeField]
     private List<SectorComponentsSkinFactory> sectorComponentsSkinFactories;
 
     [SerializeField]
-    private Sector menuSector;
+    private MenuSector menuSector;
 
     [SerializeField]
     private BonusManager bonusManager;
@@ -16,6 +17,7 @@ public class SectorManager : MonoBehaviour // TODO class menu sector + class gam
     private ObstacleManager obstacleManager;
 
     private Queue<Sector> sectorQueue;
+    private Vector3 startSectorPosition;
     private Vector3 nextSectorPosition;
     private System.Random rand;
 
@@ -24,15 +26,24 @@ public class SectorManager : MonoBehaviour // TODO class menu sector + class gam
         // TODO check allowed factories
 
         sectorQueue = new Queue<Sector>();
+        sectorQueue.Enqueue(menuSector);
 
-        nextSectorPosition = new Vector3
+        startSectorPosition = new Vector3
         (
             menuSector.transform.position.x + menuSector.transform.localScale.x / 2,
             1.26f,
             -8
         );
 
+        nextSectorPosition = startSectorPosition;
+
         rand = new System.Random();
+    }
+
+    public void ActivateMenuSector()
+    { 
+        menuSector.Activate();
+        sectorQueue.Enqueue(menuSector);
     }
 
     public void MoveOn()
@@ -50,10 +61,22 @@ public class SectorManager : MonoBehaviour // TODO class menu sector + class gam
 
         if (sectorQueue.Count > 2)
         {
-            Destroy(sectorQueue.Dequeue().gameObject);
+            sectorQueue.Dequeue().Remove();
         }
 
         nextSectorPosition.x += newSector.transform.localScale.x / 2;
+    }
+
+    public void ClearAll()
+    {
+        foreach (Sector sector in sectorQueue)
+        {
+            sector.Remove();
+        }
+
+        sectorQueue.Clear();
+
+        nextSectorPosition = startSectorPosition;
     }
 
     private SectorComponentsSkinFactory GetRandomSectorComponentsSkinFactory()

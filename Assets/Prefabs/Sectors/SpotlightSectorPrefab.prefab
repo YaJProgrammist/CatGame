@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2664230927991472456}
   - component: {fileID: 2664230927991472457}
   - component: {fileID: 2664230927991472458}
-  - component: {fileID: 2986510928934298887}
+  - component: {fileID: 4795623009484412807}
   m_Layer: 0
   m_Name: SpotlightSectorPrefab
   m_TagString: Untagged
@@ -97,7 +97,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2986510928934298887
+--- !u!114 &4795623009484412807
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2664230927991472452}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab26091187aa14b4db3020b065c24805, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e97a7fbee509b441972dc6d4ded46b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   EndTriggered:
@@ -203,8 +203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9108062862033914086}
   - component: {fileID: 8282837507528600174}
-  - component: {fileID: 3747884861227872647}
-  - component: {fileID: 322385453}
+  - component: {fileID: 7886897903552408024}
   m_Layer: 0
   m_Name: Floor2D
   m_TagString: Untagged
@@ -252,22 +251,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.1}
   m_EdgeRadius: 0
---- !u!114 &3747884861227872647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6045890247187600994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab26091187aa14b4db3020b065c24805, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EndTriggered:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &322385453
+--- !u!114 &7886897903552408024
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

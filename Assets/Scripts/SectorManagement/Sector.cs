@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class Sector : MonoBehaviour
+public abstract class Sector : MonoBehaviour
 {
     public UnityEvent EndTriggered = new UnityEvent();
+
+    public abstract void Remove();
 }

@@ -3,11 +3,12 @@
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    private Camera camera;
+    private Camera mainCamera;
 
     private PlayerMovingBehavior movingBehavior;
     private Rigidbody2D playerRigidbody;
     private float xDistanceToCamera;
+    private Vector3 startPlayerPosition;
     private bool isMoving;
 
     // Start is called before the first frame update
@@ -17,7 +18,9 @@ public class Player : MonoBehaviour
 
         movingBehavior = new Standing(playerRigidbody);
 
-        xDistanceToCamera = camera.transform.position.x - this.transform.position.x;
+        xDistanceToCamera = mainCamera.transform.position.x - this.transform.position.x;
+
+        startPlayerPosition = this.transform.position;
 
         isMoving = false;
     }
@@ -41,9 +44,9 @@ public class Player : MonoBehaviour
 
     private void MoveCamera()
     {
-        Vector3 currentCameraPosition = camera.transform.position;
+        Vector3 currentCameraPosition = mainCamera.transform.position;
         currentCameraPosition.x = this.transform.position.x + xDistanceToCamera;
-        camera.transform.position = currentCameraPosition;
+        mainCamera.transform.position = currentCameraPosition;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -77,6 +80,12 @@ public class Player : MonoBehaviour
     {
         isMoving = false;
         movingBehavior = new Standing(playerRigidbody);
+    }
+   
+    public void MoveToStart()
+    {
+        this.transform.position = startPlayerPosition;
+        MoveCamera();
     }
 
     private bool TryHandleColliderAsWall(Collider2D collider)

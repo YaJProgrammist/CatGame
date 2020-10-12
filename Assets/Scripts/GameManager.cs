@@ -23,8 +23,6 @@ public class GameManager : MonoBehaviour
     {
         HealthController playerHealthController = player.GetComponent<HealthController>();
         playerHealthController.NoLivesLeft.AddListener(GameOver);
-
-        GoToMainMenu();
     }
 
     public void StartGame()
@@ -40,8 +38,10 @@ public class GameManager : MonoBehaviour
         playmodeCanvas.gameObject.SetActive(false);
         gameOverCanvas.gameObject.SetActive(false);
         mainMenuCanvas.gameObject.SetActive(true);
-        // TODO instantiate first sector
-        // TODO clear all other sectors
+        
+        player.MoveToStart();
+        sectorManager.ClearAll();
+        sectorManager.ActivateMenuSector();
         // TODO coins earned take from bonus manager
         // TODO refresh bonus manager coins count + health controller lives count
     }

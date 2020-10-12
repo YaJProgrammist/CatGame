@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1263493487218055828}
   - component: {fileID: 1263493487218055829}
   - component: {fileID: 1263493487218055830}
-  - component: {fileID: 2018699594591846107}
+  - component: {fileID: 7967850543580709655}
   m_Layer: 0
   m_Name: LivingRoomSectorPrefab
   m_TagString: Untagged
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2018699594591846107
+--- !u!114 &7967850543580709655
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1263493487218055832}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab26091187aa14b4db3020b065c24805, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fd0ddc200130b642b9567c3c78370ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   EndTriggered:
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0652b0f69711e46b0b1f05642f231f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSector: {fileID: 2018699594591846107}
+  currentSector: {fileID: 7967850543580709655}
 --- !u!1 &3595076725666482703
 GameObject:
   m_ObjectHideFlags: 0

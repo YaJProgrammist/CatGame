@@ -9,7 +9,7 @@ public class HealthController : MonoBehaviour
     [SerializeField]
     private Text LivesLeftNumberText;
 
-    private int _livesCount;
+    private int _livesCount; 
 
     public int LivesCount 
     {
@@ -37,7 +37,7 @@ public class HealthController : MonoBehaviour
 
     void Start()
     {
-        LivesCount = 5;
+        LivesCount = 1; // TODO 5
     }
 
     public void IncreaseLivesCount()
