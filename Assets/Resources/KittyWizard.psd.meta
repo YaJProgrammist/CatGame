@@ -1,0 +1,644 @@
+fileFormatVersion: 2
+guid: 98e44a1ee3705884d8fba0266c61a324
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4744076300166001907
+    second: KittyWizard_0
+  - first:
+      213: 8350487223656482292
+    second: KittyWizard_1
+  - first:
+      213: -1747802769261163401
+    second: KittyWizard_2
+  - first:
+      213: -4764619087947765542
+    second: KittyWizard_3
+  - first:
+      213: 104003284536738650
+    second: KittyWizard_4
+  - first:
+      213: -3053608799634239773
+    second: KittyWizard_5
+  - first:
+      213: -3957015135334025776
+    second: KittyWizard_6
+  - first:
+      213: -5259240243243289857
+    second: KittyWizard_7
+  - first:
+      213: -8661419193935692632
+    second: KittyWizard_8
+  - first:
+      213: -7608125394750570134
+    second: KittyWizard_9
+  - first:
+      213: 1783282961573469857
+    second: KittyWizard_10
+  - first:
+      213: 8876611270688456561
+    second: KittyWizard_11
+  - first:
+      213: -5660931760100715378
+    second: KittyWizard_12
+  - first:
+      213: -970595364266498881
+    second: KittyWizard_13
+  - first:
+      213: -3515388611963903607
+    second: KittyWizard_14
+  - first:
+      213: -5640187204540235497
+    second: KittyWizard_15
+  - first:
+      213: -2609244690375000646
+    second: KittyWizard_0
+  - first:
+      213: -943248923116899739
+    second: KittyWizard_1
+  - first:
+      213: 7258984198099738302
+    second: KittyWizard_2
+  - first:
+      213: 1201001913358942099
+    second: KittyWizard_3
+  - first:
+      213: -6751754258226174611
+    second: KittyWizard_4
+  - first:
+      213: -2424780805712771198
+    second: KittyWizard_5
+  - first:
+      213: 6284189771648725156
+    second: KittyWizard_6
+  - first:
+      213: -8700260715829181129
+    second: KittyWizard_7
+  - first:
+      213: 5597516437555017918
+    second: KittyWizard_8
+  - first:
+      213: -6647962442272874700
+    second: KittyWizard_9
+  - first:
+      213: 3482765493331451909
+    second: KittyWizard_10
+  - first:
+      213: -5628829626708250890
+    second: KittyWizard_11
+  - first:
+      213: 7589845824423549896
+    second: KittyWizard_12
+  - first:
+      213: 8776874460951770711
+    second: KittyWizard_13
+  - first:
+      213: -4029331758310437262
+    second: KittyWizard_14
+  - first:
+      213: -8469694441592060304
+    second: KittyWizard_15
+  - first:
+      213: -7978607304048940845
+    second: KittyWizard_16
+  - first:
+      213: 1385214445687936184
+    second: KittyWizard_17
+  - first:
+      213: -5483082985637161183
+    second: KittyWizard_18
+  - first:
+      213: -918709309111676980
+    second: KittyWizard_19
+  - first:
+      213: -6288982463992599325
+    second: KittyWizard_20
+  - first:
+      213: -3929326017718174898
+    second: KittyWizard_21
+  - first:
+      213: 7004601091853627711
+    second: KittyWizard_22
+  - first:
+      213: 4205896776796641193
+    second: KittyWizard_23
+  - first:
+      213: -339854801307315568
+    second: KittyWizard_24
+  - first:
+      213: 8222997404357626213
+    second: KittyWizard_25
+  - first:
+      213: -4055212273877814417
+    second: KittyWizard_26
+  - first:
+      213: 2970218601061309680
+    second: KittyWizard_27
+  - first:
+      213: 8071823353255615562
+    second: KittyWizard_28
+  - first:
+      213: 7323442347251598608
+    second: KittyWizard_29
+  - first:
+      213: 3488382704732381835
+    second: KittyWizard_30
+  - first:
+      213: -5578221042888435445
+    second: KittyWizard_31
+  - first:
+      213: -5948896764928820866
+    second: KittyWizard_32
+  - first:
+      213: -1565318701359995957
+    second: KittyWizard_33
+  - first:
+      213: -7647325234808911408
+    second: KittyWizard_34
+  - first:
+      213: 6977748340975911129
+    second: KittyWizard_35
+  - first:
+      213: -3264964081517833989
+    second: KittyWizard_36
+  - first:
+      213: 1293854255394920138
+    second: KittyWizard_37
+  - first:
+      213: 3229172512908692743
+    second: KittyWizard_38
+  - first:
+      213: -4256276465960018115
+    second: KittyWizard_39
+  - first:
+      213: 7418209643613383754
+    second: KittyWizard_40
+  - first:
+      213: -1720332969000928845
+    second: KittyWizard_41
+  - first:
+      213: 3509874308141837169
+    second: KittyWizard_42
+  - first:
+      213: 5462929223050726607
+    second: KittyWizard_43
+  - first:
+      213: 1936984119882610623
+    second: KittyWizard_44
+  - first:
+      213: -670477086502535291
+    second: KittyWizard_45
+  - first:
+      213: 3003671762948567129
+    second: KittyWizard_46
+  - first:
+      213: 9145961244060914759
+    second: KittyWizard_47
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: KittyWizard_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 348
+        width: 76
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abdbf1a47c91acbd0800000000000000
+      internalID: -2609244690375000646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KittyWizard_1
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 348
+        width: 76
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 562f8da1a18e8e2f0800000000000000
+      internalID: -943248923116899739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KittyWizard_2
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 348
+        width: 76
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebe98ed1ba71db460800000000000000
+      internalID: 7258984198099738302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KittyWizard_3
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 348
+        width: 76
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39ff25480e0daa010800000000000000
+      internalID: 1201001913358942099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KittyWizard_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 236
+        width: 76
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d65a2b34643fc42a0800000000000000
+      internalID: -6751754258226174611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KittyWizard_5
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 236
+        width: 76
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2870e4944b2795ed0800000000000000
+      internalID: -2424780805712771198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KittyWizard_6
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 236
+        width: 76
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a0f3406d4de53750800000000000000
+      internalID: 6284189771648725156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KittyWizard_7
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 236
+        width: 76
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73547b399f6724780800000000000000
+      internalID: -8700260715829181129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KittyWizard_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 124
+        width: 76
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb870e40b8f5ead40800000000000000
+      internalID: 5597516437555017918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KittyWizard_9
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 124
+        width: 76
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43fdf249161bdb3a0800000000000000
+      internalID: -6647962442272874700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KittyWizard_10
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 124
+        width: 76
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 500620283c4455030800000000000000
+      internalID: 3482765493331451909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KittyWizard_11
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 124
+        width: 76
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fe2cdef64162e1b0800000000000000
+      internalID: -5628829626708250890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KittyWizard_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 12
+        width: 76
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cb5fb8809c845960800000000000000
+      internalID: 7589845824423549896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KittyWizard_13
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 12
+        width: 76
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7567a3302d8bdc970800000000000000
+      internalID: 8776874460951770711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KittyWizard_14
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 12
+        width: 76
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27ec4b73d10f418c0800000000000000
+      internalID: -4029331758310437262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KittyWizard_15
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 12
+        width: 76
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0760ecc97c9957a80800000000000000
+      internalID: -8469694441592060304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
