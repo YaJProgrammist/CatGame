@@ -5,9 +5,6 @@ public class MovingBehaviorController : MonoBehaviour
     [SerializeField]
     private Camera mainCamera;
 
-    [SerializeField]
-    private Collider2D playerCollider;
-
     private float xDistanceToCamera;
     private Rigidbody2D playerRigidbody;
     private PlayerMovingBehavior movingBehavior;

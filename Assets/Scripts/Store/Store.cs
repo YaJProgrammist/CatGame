@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Store : MonoBehaviour
 {
@@ -10,11 +11,33 @@ public class Store : MonoBehaviour
     [SerializeField]
     private List<StoreItem> itemPrefabsList;
 
+    [SerializeField]
+    private Canvas storeCanvas;
+
+    [SerializeField]
+    private Text storeCoinsNumberText;
+
     private float scaleFactor;
 
     void Start()
     {
         DisplayAllItems();
+    }
+
+    public void Open()
+    {
+        storeCanvas.gameObject.SetActive(true);
+        RefreshData();
+    }
+
+    public void Close()
+    {
+        storeCanvas.gameObject.SetActive(false);
+    }
+
+    private void RefreshData()
+    {
+        storeCoinsNumberText.text = DataHolder.GetCurrentCoinsNumber().ToString();
     }
 
     private void DisplayAllItems()

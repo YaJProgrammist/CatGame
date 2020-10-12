@@ -637,4 +637,5 @@ MonoBehaviour:
   itemTargetImage: {fileID: 573210963}
   costText: {fileID: 1942019026}
   titleText: {fileID: 230357227}
-  Cost: 50
+  cost: 50
+  itemId: 0

@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour // TODO singleton ?
     private Canvas gameOverCanvas;
 
     [SerializeField]
-    private Canvas storeCanvas;
+    private Store store;
 
     [SerializeField]
     private Text currentCoinsNumberText;
@@ -54,12 +54,12 @@ public class GameManager : MonoBehaviour // TODO singleton ?
     public void OpenStore()
     {
         mainMenuCanvas.gameObject.SetActive(false);
-        storeCanvas.gameObject.SetActive(true);
+        store.Open();
     }
 
     public void CloseStore()
     {
-        storeCanvas.gameObject.SetActive(false);
+        store.Close();
         mainMenuCanvas.gameObject.SetActive(true);
     }
 

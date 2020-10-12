@@ -18,18 +18,32 @@ public class StoreItem : MonoBehaviour
     [SerializeField]
     private Text titleText;
 
-    public int Cost;
+    [SerializeField]
+    private int cost;
+
+    [SerializeField]
+    private Item itemId;
 
     void Start()
     {
         itemTargetImage.sprite = itemSourceSprite;
-        costText.text = Cost.ToString();
+        costText.text = cost.ToString();
         titleText.text = title;
     }
 
-    public void SetNewCost(int newCost)
+    public int GetCost()
     {
-        Cost = newCost;
-        costText.text = Cost.ToString();
+        return cost;
+    }
+
+    public void SetCost(int newCost)
+    {
+        cost = newCost;
+        costText.text = cost.ToString();
+    }
+
+    public Item GetItemId()
+    {
+        return itemId;
     }
 }
