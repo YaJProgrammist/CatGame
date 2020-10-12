@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Canvas gameOverCanvas;
 
+    [SerializeField]
+    private Canvas storeCanvas;
+
     void Start()
     {
         HealthController playerHealthController = player.GetComponent<HealthController>();
@@ -38,16 +41,35 @@ public class GameManager : MonoBehaviour
         playmodeCanvas.gameObject.SetActive(false);
         gameOverCanvas.gameObject.SetActive(false);
         mainMenuCanvas.gameObject.SetActive(true);
-        
-        player.MoveToStart();
-        sectorManager.ClearAll();
-        sectorManager.ActivateMenuSector();
+
+        ResetGame();
+    }
+
+    public void OpenStore()
+    {
+        storeCanvas.gameObject.SetActive(true);
+    }
+
+    public void CloseStore()
+    {
+        storeCanvas.gameObject.SetActive(false);
+    }
+
+    private void ResetGame()
+    {
+        player.Reset();
+        sectorManager.Reset();
+
+
         // TODO coins earned take from bonus manager
+
+
         // TODO refresh bonus manager coins count + health controller lives count
     }
 
     private void GameOver()
     {
+        sectorManager.FinishGame();
         player.StopMoving();
         playmodeCanvas.gameObject.SetActive(false);
         gameOverCanvas.gameObject.SetActive(true);

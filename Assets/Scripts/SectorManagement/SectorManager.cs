@@ -40,12 +40,6 @@ public class SectorManager : MonoBehaviour
         rand = new System.Random();
     }
 
-    public void ActivateMenuSector()
-    { 
-        menuSector.Activate();
-        sectorQueue.Enqueue(menuSector);
-    }
-
     public void MoveOn()
     {
         SectorComponentsSkinFactory factory = GetRandomSectorComponentsSkinFactory();
@@ -67,7 +61,19 @@ public class SectorManager : MonoBehaviour
         nextSectorPosition.x += newSector.transform.localScale.x / 2;
     }
 
-    public void ClearAll()
+    public void FinishGame()
+    {
+        bonusManager.FinishGame();
+    }
+
+    public void Reset()
+    {
+        ClearAll();
+        ActivateMenuSector();
+        bonusManager.Reset();
+    }
+
+    private void ClearAll()
     {
         foreach (Sector sector in sectorQueue)
         {
@@ -83,5 +89,11 @@ public class SectorManager : MonoBehaviour
     {
         int factoryNum = rand.Next(sectorComponentsSkinFactories.Count);
         return sectorComponentsSkinFactories[factoryNum];
+    }
+
+    private void ActivateMenuSector()
+    {
+        menuSector.Activate();
+        sectorQueue.Enqueue(menuSector);
     }
 }

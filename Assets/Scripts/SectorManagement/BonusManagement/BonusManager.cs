@@ -10,6 +10,9 @@ public class BonusManager : MonoBehaviour
     [SerializeField]
     private Text PickedUpCoinsNumberText;
 
+    [SerializeField]
+    private Text FinalCoinsNumberText;
+
     private int _pickedUpCoinsNumber;
     private System.Random rand;
 
@@ -26,15 +29,26 @@ public class BonusManager : MonoBehaviour
 
     void Start()
     {
-        PickedUpCoinsNumber = 0;
-
         rand = new System.Random();
+
+        Reset();
     }
 
     public void AttachBonusPresetToSector(Sector sector)
     {
         BonusPreset prefab = GetRandomBonusPreset();
         Instantiate<BonusPreset>(prefab.GetComponent<BonusPreset>(), sector.transform);
+    }
+
+    public void Reset()
+    {
+        PickedUpCoinsNumber = 0;
+    }
+
+    public void FinishGame()
+    {
+        FinalCoinsNumberText.text = PickedUpCoinsNumber.ToString();
+        // TODO save earned coins
     }
 
     private BonusPreset GetRandomBonusPreset()

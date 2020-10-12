@@ -37,6 +37,11 @@ public class HealthController : MonoBehaviour
 
     void Start()
     {
+        Reset();
+    }
+
+    public void Reset()
+    {
         LivesCount = 1; // TODO 5
     }
 

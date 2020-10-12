@@ -5,6 +5,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Camera mainCamera;
 
+    [SerializeField]
+    private HealthController healthController;
+
     private PlayerMovingBehavior movingBehavior;
     private Rigidbody2D playerRigidbody;
     private float xDistanceToCamera;
@@ -82,7 +85,13 @@ public class Player : MonoBehaviour
         movingBehavior = new Standing(playerRigidbody);
     }
    
-    public void MoveToStart()
+    public void Reset()
+    {
+        MoveToStart();
+        this.healthController.Reset();
+    }
+
+    private void MoveToStart()
     {
         this.transform.position = startPlayerPosition;
         MoveCamera();

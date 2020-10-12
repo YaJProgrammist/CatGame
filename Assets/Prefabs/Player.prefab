@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
+  healthController: {fileID: 595309665}
 --- !u!50 &2794216813722752099
 Rigidbody2D:
   serializedVersion: 4
