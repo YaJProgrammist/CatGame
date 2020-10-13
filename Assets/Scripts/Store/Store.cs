@@ -9,7 +9,10 @@ public class Store : MonoBehaviour
     private RectTransform storeItemListScrollViewContent;
 
     [SerializeField]
-    private List<StoreItem> itemPrefabsList;
+    private StoreItemVizualizer itemPanelPrefab;
+
+    [SerializeField]
+    private List<StoreItem> itemList;
 
     [SerializeField]
     private Canvas storeCanvas;
@@ -18,6 +21,7 @@ public class Store : MonoBehaviour
     private Text storeCoinsNumberText;
 
     private float scaleFactor;
+    private List<StoreItemVizualizer> vizualizedItemsList = new List<StoreItemVizualizer>();
 
     void Start()
     {
@@ -35,25 +39,21 @@ public class Store : MonoBehaviour
         storeCanvas.gameObject.SetActive(false);
     }
 
-    private void RefreshData()
+    public void RefreshData()
     {
         storeCoinsNumberText.text = DataHolder.GetCurrentCoinsNumber().ToString();
+        RefreshAllItems();
     }
 
     private void DisplayAllItems()
     {
-        if (itemPrefabsList.Count == 0)
-        {
-            return;
-        }
-
-        scaleFactor = itemPrefabsList.Count * itemPrefabsList[0].GetComponent<RectTransform>().rect.height / storeItemListScrollViewContent.rect.height;
+        scaleFactor = itemList.Count * itemPanelPrefab.GetComponent<RectTransform>().rect.height / storeItemListScrollViewContent.rect.height;
 
         Vector2 currentContentLocalScale = storeItemListScrollViewContent.transform.localScale;
         currentContentLocalScale.y = currentContentLocalScale.y * scaleFactor;
         storeItemListScrollViewContent.transform.localScale = currentContentLocalScale;
 
-        foreach (StoreItem item in itemPrefabsList)
+        foreach (StoreItem item in itemList)
         {
              DisplayItem(item);
         }
@@ -61,10 +61,21 @@ public class Store : MonoBehaviour
 
     private void DisplayItem(StoreItem item)
     {
-        StoreItem currentStoreItem = Instantiate(item, storeItemListScrollViewContent);
+        StoreItemVizualizer currentStoreItem = Instantiate(itemPanelPrefab, storeItemListScrollViewContent);
 
         Vector2 currentStoreItemLocalScale = currentStoreItem.transform.localScale;
         currentStoreItemLocalScale.y /= scaleFactor;
         currentStoreItem.transform.localScale = currentStoreItemLocalScale;
+
+        currentStoreItem.SetStoreItem(item);
+        vizualizedItemsList.Add(currentStoreItem);
+    }
+
+    private void RefreshAllItems()
+    {
+        foreach (StoreItemVizualizer item in vizualizedItemsList)
+        {
+            item.Refresh();
+        }
     }
 }

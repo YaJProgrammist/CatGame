@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class StoreItem : MonoBehaviour // TODO separate visual item and logical item
+public abstract class StoreItem : MonoBehaviour 
 {
     [SerializeField]
     private string title;
@@ -10,25 +10,19 @@ public class StoreItem : MonoBehaviour // TODO separate visual item and logical 
     private Sprite itemSourceSprite;
 
     [SerializeField]
-    private Image itemTargetImage;
-
-    [SerializeField]
-    private Text costText;
-
-    [SerializeField]
-    private Text titleText;
-
-    [SerializeField]
     private int cost;
 
     [SerializeField]
     private Item itemId;
 
-    void Start()
+    public string GetTitle()
     {
-        itemTargetImage.sprite = itemSourceSprite;
-        costText.text = cost.ToString();
-        titleText.text = title;
+        return title;
+    }
+
+    public Sprite GetIcon()
+    {
+        return itemSourceSprite;
     }
 
     public int GetCost()
@@ -36,14 +30,12 @@ public class StoreItem : MonoBehaviour // TODO separate visual item and logical 
         return cost;
     }
 
-    public void SetCost(int newCost)
-    {
-        cost = newCost;
-        costText.text = cost.ToString();
-    }
-
     public Item GetItemId()
     {
         return itemId;
     }
+
+    public abstract bool TryBuy();
+
+    public abstract bool TryApply();
 }

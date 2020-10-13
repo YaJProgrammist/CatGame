@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour // TODO singleton ?
 
     public void CloseStore()
     {
+        RefreshMainMenuData();
         store.Close();
         mainMenuCanvas.gameObject.SetActive(true);
     }

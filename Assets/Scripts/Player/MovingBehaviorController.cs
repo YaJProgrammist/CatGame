@@ -50,8 +50,9 @@ public class MovingBehaviorController : MonoBehaviour
     {
         IsMoving = true;
 
-        if (true)// TODO if boosted ...
+        if (DataHolder.GetIfItemIsApplied(Item.Booster))
         {
+            DataHolder.SaveItemAsUnapplied(Item.Booster);
             SwitchToBoost();
             return;
         }
