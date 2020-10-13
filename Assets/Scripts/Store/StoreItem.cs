@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class StoreItem : MonoBehaviour
+public class StoreItem : MonoBehaviour // TODO separate visual item and logical item
 {
     [SerializeField]
     private string title;
