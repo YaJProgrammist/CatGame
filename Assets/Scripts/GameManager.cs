@@ -33,6 +33,13 @@ public class GameManager : MonoBehaviour // TODO singleton ?
         RefreshMainMenuData();
     }
 
+    public void PlayAgain()
+    {
+        gameOverCanvas.gameObject.SetActive(false);
+        ResetGame();
+        StartGame();
+    }
+
     public void StartGame()
     {
         mainMenuCanvas.gameObject.SetActive(false);

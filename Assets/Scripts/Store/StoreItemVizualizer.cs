@@ -20,7 +20,6 @@ public class StoreItemVizualizer : MonoBehaviour
 
     private StoreItem storeItem;
 
-
     public void SetStoreItem(StoreItem item)
     {
         storeItem = item;
