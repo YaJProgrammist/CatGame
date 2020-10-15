@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class SectorManager : MonoBehaviour 
@@ -16,6 +15,7 @@ public class SectorManager : MonoBehaviour
     [SerializeField]
     private ObstacleManager obstacleManager;
 
+    private List<SectorComponentsSkinFactory> appliedSectorComponentsSkinFactories;
     private Queue<Sector> sectorQueue;
     private Vector3 startSectorPosition;
     private Vector3 nextSectorPosition;
@@ -23,8 +23,6 @@ public class SectorManager : MonoBehaviour
 
     void Start()
     {
-        // TODO check allowed factories
-
         sectorQueue = new Queue<Sector>();
         sectorQueue.Enqueue(menuSector);
 
@@ -38,6 +36,10 @@ public class SectorManager : MonoBehaviour
         nextSectorPosition = startSectorPosition;
 
         rand = new System.Random();
+
+        appliedSectorComponentsSkinFactories = new List<SectorComponentsSkinFactory>();
+
+        RefreshAllowedFactories();
     }
 
     public void MoveOn()
@@ -73,6 +75,11 @@ public class SectorManager : MonoBehaviour
         bonusManager.Reset();
     }
 
+    public void Refresh()
+    {
+        RefreshAllowedFactories();
+    }
+
     private void ClearAll()
     {
         foreach (Sector sector in sectorQueue)
@@ -85,10 +92,21 @@ public class SectorManager : MonoBehaviour
         nextSectorPosition = startSectorPosition;
     }
 
+    private void RefreshAllowedFactories()
+    {
+        foreach (SectorComponentsSkinFactory factory in sectorComponentsSkinFactories)
+        {
+            if (DataHolder.GetIfItemIsApplied(factory.GetSectorType()))
+            {
+                appliedSectorComponentsSkinFactories.Add(factory);
+            }
+        }
+    }
+
     private SectorComponentsSkinFactory GetRandomSectorComponentsSkinFactory()
     {
-        int factoryNum = rand.Next(sectorComponentsSkinFactories.Count);
-        return sectorComponentsSkinFactories[factoryNum];
+        int factoryNum = rand.Next(appliedSectorComponentsSkinFactories.Count);
+        return appliedSectorComponentsSkinFactories[factoryNum];
     }
 
     private void ActivateMenuSector()

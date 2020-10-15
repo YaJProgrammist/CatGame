@@ -15,6 +15,9 @@ public class SectorComponentsSkinFactory : MonoBehaviour
     [SerializeField]
     private AnimatorController _boosterAnimatorController;
 
+    [SerializeField]
+    private Item sectorType;
+
     public AnimatorController CoinAnimatorController
     {
         get
@@ -44,5 +47,10 @@ public class SectorComponentsSkinFactory : MonoBehaviour
         Sector newSector = Instantiate<Sector>(sectorPrefab.GetComponent<Sector>());
 
         return newSector;
+    }
+
+    public Item GetSectorType()
+    {
+        return sectorType;
     }
 }

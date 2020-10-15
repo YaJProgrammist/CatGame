@@ -854,6 +854,7 @@ MonoBehaviour:
   _rubySprite: {fileID: -8355959474217262030, guid: a5e5336a504c4784aaa94e49e7b441a1,
     type: 3}
   _boosterAnimatorController: {fileID: 0}
+  sectorType: 202
 --- !u!4 &375970841
 Transform:
   m_ObjectHideFlags: 0
@@ -906,6 +907,7 @@ MonoBehaviour:
   _rubySprite: {fileID: 2800675324502482101, guid: a5e5336a504c4784aaa94e49e7b441a1,
     type: 3}
   _boosterAnimatorController: {fileID: 0}
+  sectorType: 201
 --- !u!114 &375970844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,6 +927,7 @@ MonoBehaviour:
   _rubySprite: {fileID: -6219937985296730120, guid: a5e5336a504c4784aaa94e49e7b441a1,
     type: 3}
   _boosterAnimatorController: {fileID: 0}
+  sectorType: 200
 --- !u!1 &466990118
 GameObject:
   m_ObjectHideFlags: 0
@@ -2913,16 +2916,28 @@ MonoBehaviour:
     itemSourceSprite: {fileID: 21300000, guid: a0f045920db206840a6bc806667dfb85, type: 3}
     cost: 50
     itemId: 0
-  - title: CatSkin
+  - title: Cat skin
     itemSourceSprite: {fileID: -5259240243243289857, guid: 98e44a1ee3705884d8fba0266c61a324,
       type: 3}
     cost: 0
     itemId: 100
-  - title: FoxSkin
+  - title: Fox skin
     itemSourceSprite: {fileID: 6802556115339426880, guid: a1110007919af154b973613d50055386,
       type: 3}
     cost: 300
     itemId: 101
+  - title: Kitchen sector
+    itemSourceSprite: {fileID: 21300000, guid: c93ce5916715ed841a0691a345bf6836, type: 3}
+    cost: 0
+    itemId: 200
+  - title: Living room sector
+    itemSourceSprite: {fileID: 21300000, guid: 1061b4d973e526b4493e67d43db4ecdc, type: 3}
+    cost: 0
+    itemId: 202
+  - title: Bathroom sector
+    itemSourceSprite: {fileID: 21300000, guid: 93f922fc7c4b1f841bc392ba7a5811ce, type: 3}
+    cost: 1000
+    itemId: 201
   storeCanvas: {fileID: 1711002252}
   storeCoinsNumberText: {fileID: 856309706}
 --- !u!4 &1620543063

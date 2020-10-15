@@ -4,6 +4,6 @@
     CatSkin = 100, //100..199 - skins
     FoxSkin = 101, 
     KitchenSector = 200, //200..299 - sectors
-    BathroomSector = 200,
-    LivingRoomSector = 200
+    BathroomSector = 201,
+    LivingRoomSector = 202
 }

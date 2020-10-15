@@ -141,8 +141,14 @@ static class DataHolder
     private static void SetInitialSettings()
     {
         PlayerPrefs.DeleteAll();
+
         PlayerPrefs.SetInt(coinsNumberName, 1000);
+
         SaveItemAsApplied(Item.CatSkin);
+
+        SaveItemAsApplied(Item.KitchenSector);
+        SaveItemAsApplied(Item.LivingRoomSector);
+
         PlayerPrefs.GetInt(initializationDoneName, 1);
     }
 
