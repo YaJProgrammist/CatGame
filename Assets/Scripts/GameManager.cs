@@ -104,6 +104,13 @@ public class GameManager : MonoBehaviour
         mainMenuCanvas.gameObject.SetActive(true);
     }
 
+    public void ResetPregress()
+    {
+        DataHolder.SetInitialSettings();
+        RefreshMainMenuData();
+        player.Refresh();
+    }
+
     private void RefreshMainMenuData()
     {
         currentCoinsNumberText.text = DataHolder.GetCurrentCoinsNumber().ToString();

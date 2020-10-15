@@ -14,6 +14,20 @@ static class DataHolder
         }
     }
 
+    public static void SetInitialSettings()
+    {
+        PlayerPrefs.DeleteAll();
+
+        PlayerPrefs.SetInt(coinsNumberName, 100);
+
+        SaveItemAsApplied(Item.CatSkin);
+
+        SaveItemAsApplied(Item.KitchenSector);
+        SaveItemAsApplied(Item.LivingRoomSector);
+
+        PlayerPrefs.SetInt(initializationDoneName, 1);
+    }
+
     public static void SaveEarnedCoins(int coinsNumber)
     {
         if (PlayerPrefs.HasKey(coinsNumberName))
@@ -136,20 +150,6 @@ static class DataHolder
         Item defaultItem = ItemCategoryManager.GetDefaultItemInCategory(ItemCategory.Skin);
         PlayerPrefs.SetInt(GetAppliedKeyForItem(defaultItem), 1);
         return defaultItem;
-    }
-
-    private static void SetInitialSettings()
-    {
-        PlayerPrefs.DeleteAll();
-
-        PlayerPrefs.SetInt(coinsNumberName, 1000);
-
-        SaveItemAsApplied(Item.CatSkin);
-
-        SaveItemAsApplied(Item.KitchenSector);
-        SaveItemAsApplied(Item.LivingRoomSector);
-
-        PlayerPrefs.SetInt(initializationDoneName, 1);
     }
 
     private static string GetBoughtKeyForItem(Item item)
