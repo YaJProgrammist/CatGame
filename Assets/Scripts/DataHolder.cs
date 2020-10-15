@@ -149,7 +149,7 @@ static class DataHolder
         SaveItemAsApplied(Item.KitchenSector);
         SaveItemAsApplied(Item.LivingRoomSector);
 
-        PlayerPrefs.GetInt(initializationDoneName, 1);
+        PlayerPrefs.SetInt(initializationDoneName, 1);
     }
 
     private static string GetBoughtKeyForItem(Item item)

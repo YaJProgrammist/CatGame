@@ -1,4 +1,7 @@
-﻿public class Ruby : Bonus
+﻿using UnityEngine;
+
+[RequireComponent(typeof(SpriteRenderer))]
+public class Ruby : Bonus
 {
     protected override sealed void MakeImpact()
     {

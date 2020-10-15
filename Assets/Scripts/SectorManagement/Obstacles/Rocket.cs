@@ -29,6 +29,7 @@ public class Rocket : Obstacle
         MovingBehavior = new RocketBehaviorUsual();
     }
 
+    //Also called when rocket is seen in editor - HIDE SCENE EDITOR TO TEST PROPERLY
     void OnBecameInvisible()
     {
         currentCautionSign.Hide();

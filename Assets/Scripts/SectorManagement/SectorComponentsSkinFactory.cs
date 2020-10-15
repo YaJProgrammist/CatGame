@@ -13,9 +13,6 @@ public class SectorComponentsSkinFactory : MonoBehaviour
     private Sprite _rubySprite;
 
     [SerializeField]
-    private AnimatorController _boosterAnimatorController;
-
-    [SerializeField]
     private Item sectorType;
 
     public AnimatorController CoinAnimatorController
@@ -34,17 +31,10 @@ public class SectorComponentsSkinFactory : MonoBehaviour
         }
     }
 
-    public AnimatorController BoosterAnimatorController
-    {
-        get
-        {
-            return _boosterAnimatorController;
-        }
-    }
-
     public Sector GetNewSector()
     {
-        Sector newSector = Instantiate<Sector>(sectorPrefab.GetComponent<Sector>());
+        Sector newSector = Instantiate(sectorPrefab.GetComponent<Sector>());
+        newSector.ComponentsSkinFactory = this;
 
         return newSector;
     }

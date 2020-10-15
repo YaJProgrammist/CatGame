@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class Coin : Bonus
 {
     protected override sealed void MakeImpact()

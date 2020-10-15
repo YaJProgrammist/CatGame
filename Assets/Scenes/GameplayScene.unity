@@ -299,25 +299,10 @@ PolygonCollider2D:
       - {x: 0.24308208, y: 0.010000012}
       - {x: 0.19809933, y: 0.13307853}
       - {x: 0.11462279, y: 0.23884822}
-      - {x: 0.085016645, y: 0.3473195}
+      - {x: 0.09240179, y: 0.3510129}
       - {x: 0.08308207, y: 0.43346602}
-      - {x: 0.07114682, y: 0.44615716}
-      - {x: 0.055377003, y: 0.44307858}
-      - {x: -0.020787088, y: 0.23615715}
-      - {x: -0.11422903, y: 0.06732989}
-      - {x: -0.1143901, y: 0.06782779}
-      - {x: -0.116539545, y: 0.06562953}
-      - {x: -0.11804829, y: 0.0634449}
-      - {x: -0.1186815, y: 0.06333888}
-      - {x: -0.11883259, y: 0.04798411}
-      - {x: -0.118757404, y: 0.046935935}
-      - {x: -0.12006267, y: 0.048812866}
-      - {x: -0.12366563, y: 0.052139476}
-      - {x: -0.13365027, y: 0.047634095}
-      - {x: -0.13078761, y: 0.020005345}
-      - {x: -0.14308259, y: 0.01115188}
-      - {x: -0.19039348, y: -0.04576968}
-      - {x: -0.17462295, y: -0.21307857}
+      - {x: 0.05353081, y: 0.4338451}
+      - {x: -0.21003565, y: -0.0878687}
       - {x: -0.10999999, y: -0.33615708}
       - {x: -0.047311608, y: -0.37884822}
       - {x: 0.15154102, y: -0.37038746}
@@ -849,11 +834,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sectorPrefab: {fileID: 7967850543580709655, guid: dee357a54f598024bb67abf71afe5e4e,
     type: 3}
-  _coinAnimatorController: {fileID: 9100000, guid: 7da754b3a20443140982099d6c6e1c39,
+  _coinAnimatorController: {fileID: 9100000, guid: 2597ea1ea577dde40bc02f2b62f1628a,
     type: 2}
   _rubySprite: {fileID: -8355959474217262030, guid: a5e5336a504c4784aaa94e49e7b441a1,
     type: 3}
-  _boosterAnimatorController: {fileID: 0}
   sectorType: 202
 --- !u!4 &375970841
 Transform:
@@ -906,7 +890,6 @@ MonoBehaviour:
     type: 2}
   _rubySprite: {fileID: 2800675324502482101, guid: a5e5336a504c4784aaa94e49e7b441a1,
     type: 3}
-  _boosterAnimatorController: {fileID: 0}
   sectorType: 201
 --- !u!114 &375970844
 MonoBehaviour:
@@ -926,7 +909,6 @@ MonoBehaviour:
     type: 2}
   _rubySprite: {fileID: -6219937985296730120, guid: a5e5336a504c4784aaa94e49e7b441a1,
     type: 3}
-  _boosterAnimatorController: {fileID: 0}
   sectorType: 200
 --- !u!1 &466990118
 GameObject:
@@ -2692,8 +2674,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSegmentGenerators:
-  - {fileID: 1386809678}
   - {fileID: 1386809679}
+  - {fileID: 1386809678}
   - {fileID: 1386809675}
   obstacleSegmentsPerSectorNumber: 1
 --- !u!4 &1386809677
