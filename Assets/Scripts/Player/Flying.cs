@@ -8,7 +8,7 @@ class Flying : PlayerMovingBehavior
     public Flying(Rigidbody2D rigidbody) : base (rigidbody)
     {
         velocityVector = new Vector2(1.5f, 0);
-        airJumpYStep = 1.5f;
+        airJumpYStep = 1f;
 
         rigidbody.velocity = velocityVector;
     }

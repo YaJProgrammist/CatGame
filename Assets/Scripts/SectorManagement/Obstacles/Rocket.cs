@@ -17,7 +17,6 @@ public class Rocket : Obstacle
 
     void Start()
     {
-        Debug.Log("start");
         currentCautionSign = Instantiate(cautionSignPrefab, cautionSignsHolder.transform);
         currentCautionSign.Show();
         timePassedInSec = 0;

@@ -1,8 +1,21 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class StoreItemVizualizer : MonoBehaviour 
+public class ItemAppliedUnityEvent : UnityEvent<Item>
 {
+}
+
+public class ItemBoughtUnityEvent : UnityEvent<Item>
+{
+}
+
+public class StoreItemVisualizer : MonoBehaviour 
+{
+
+    public ItemAppliedUnityEvent ItemApplied = new ItemAppliedUnityEvent();
+    public ItemBoughtUnityEvent ItemBought = new ItemBoughtUnityEvent();
+
     [SerializeField]
     private Image itemTargetImage;
 
@@ -76,6 +89,8 @@ public class StoreItemVizualizer : MonoBehaviour
         }
 
         SwitchToApply();
+
+        ItemBought?.Invoke(storeItem.GetItemId());
     }
 
     private void ApplyButtonOnClick()
@@ -86,5 +101,7 @@ public class StoreItemVizualizer : MonoBehaviour
         }
 
         applyButton.interactable = false;
+
+        ItemApplied?.Invoke(storeItem.GetItemId()) ;
     }
 }

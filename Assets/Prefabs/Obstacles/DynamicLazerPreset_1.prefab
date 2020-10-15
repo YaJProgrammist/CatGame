@@ -66,7 +66,7 @@ PrefabInstance:
     - target: {fileID: 2041850705268727035, guid: fe491c11291fec349b70a8e9ced87126,
         type: 3}
       propertyPath: cycles.Array.data[0].CautionTime
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2041850705268727035, guid: fe491c11291fec349b70a8e9ced87126,
         type: 3}
@@ -301,7 +301,7 @@ PrefabInstance:
     - target: {fileID: 2041850705268727035, guid: fe491c11291fec349b70a8e9ced87126,
         type: 3}
       propertyPath: cycles.Array.data[0].CautionTime
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2041850705268727035, guid: fe491c11291fec349b70a8e9ced87126,
         type: 3}

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +8,7 @@ public class Store : MonoBehaviour
     private RectTransform storeItemListScrollViewContent;
 
     [SerializeField]
-    private StoreItemVizualizer itemPanelPrefab;
+    private StoreItemVisualizer itemPanelPrefab;
 
     [SerializeField]
     private List<StoreItem> itemList;
@@ -21,7 +20,7 @@ public class Store : MonoBehaviour
     private Text storeCoinsNumberText;
 
     private float scaleFactor;
-    private List<StoreItemVizualizer> vizualizedItemsList = new List<StoreItemVizualizer>();
+    private List<StoreItemVisualizer> vizualizedItemsList = new List<StoreItemVisualizer>();
 
     void Start()
     {
@@ -61,11 +60,13 @@ public class Store : MonoBehaviour
 
     private void DisplayItem(StoreItem item)
     {
-        StoreItemVizualizer currentStoreItem = Instantiate(itemPanelPrefab, storeItemListScrollViewContent);
+        StoreItemVisualizer currentStoreItem = Instantiate(itemPanelPrefab, storeItemListScrollViewContent);
 
         Vector2 currentStoreItemLocalScale = currentStoreItem.transform.localScale;
         currentStoreItemLocalScale.y /= scaleFactor;
         currentStoreItem.transform.localScale = currentStoreItemLocalScale;
+        currentStoreItem.ItemBought.AddListener((boughtItem) => RefreshData());
+        currentStoreItem.ItemApplied.AddListener((appliedItem) => RefreshAllItems());
 
         currentStoreItem.SetStoreItem(item);
         vizualizedItemsList.Add(currentStoreItem);
@@ -73,7 +74,7 @@ public class Store : MonoBehaviour
 
     private void RefreshAllItems()
     {
-        foreach (StoreItemVizualizer item in vizualizedItemsList)
+        foreach (StoreItemVisualizer item in vizualizedItemsList)
         {
             item.Refresh();
         }

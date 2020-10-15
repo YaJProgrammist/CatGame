@@ -1,8 +1,18 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 static class DataHolder
 {
     private static string coinsNumberName = "CoinsNumber";
+    private static string initializationDoneName = "InitializationDone";
+
+    static DataHolder()
+    {
+        if (!PlayerPrefs.HasKey(initializationDoneName) || PlayerPrefs.GetInt(initializationDoneName) == 0)
+        {
+            SetInitialSettings();
+        }
+    }
 
     public static void SaveEarnedCoins(int coinsNumber)
     {
@@ -63,6 +73,11 @@ static class DataHolder
 
     public static void SaveItemAsApplied(Item item)
     {
+        if (ItemCategoryManager.GetItemCategory(item) == ItemCategory.Skin && item != GetCurrentPLayerSkin())
+        {
+            PutAppliedSkinIntoStorage();
+        }
+
         PlayerPrefs.SetInt(GetAppliedKeyForItem(item), 1);
     }
 
@@ -106,6 +121,31 @@ static class DataHolder
         return PlayerPrefs.GetInt(coinsNumberName);
     }
 
+    public static Item GetCurrentPLayerSkin()
+    {
+        List<Item> skins = ItemCategoryManager.GetAllItemsInCategory(ItemCategory.Skin);
+
+        foreach (Item skin in skins)
+        {
+            if (GetIfItemIsApplied(skin))
+            {
+                return skin;
+            }
+        }
+
+        Item defaultItem = ItemCategoryManager.GetDefaultItemInCategory(ItemCategory.Skin);
+        PlayerPrefs.SetInt(GetAppliedKeyForItem(defaultItem), 1);
+        return defaultItem;
+    }
+
+    private static void SetInitialSettings()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetInt(coinsNumberName, 1000);
+        SaveItemAsApplied(Item.CatSkin);
+        PlayerPrefs.GetInt(initializationDoneName, 1);
+    }
+
     private static string GetBoughtKeyForItem(Item item)
     {
         return item.ToString() + "IsBought";
@@ -114,5 +154,12 @@ static class DataHolder
     private static string GetAppliedKeyForItem(Item item)
     {
         return item.ToString() + "IsApplied";
+    }
+
+    private static void PutAppliedSkinIntoStorage()
+    {
+        Item currentPlayerSkin = GetCurrentPLayerSkin();
+        SaveItemAsBought(currentPlayerSkin);
+        SaveItemAsUnapplied(currentPlayerSkin);
     }
 }

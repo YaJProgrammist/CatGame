@@ -6,11 +6,13 @@ public class Player : MonoBehaviour
     private MovingBehaviorController movingBehaviorController;
 
     [SerializeField]
+    private SkinController skinController;
+
+    [SerializeField]
     private HealthController healthController;
 
     private Vector3 startPlayerPosition;
 
-    // Start is called before the first frame update
     void Start()
     {
         startPlayerPosition = this.transform.position;
@@ -57,6 +59,11 @@ public class Player : MonoBehaviour
         StopMoving();
         MoveToStart();
         this.healthController.Reset();
+    }
+
+    public void Refresh()
+    {
+        skinController.RefreshSkin();
     }
 
     private void MoveToStart()

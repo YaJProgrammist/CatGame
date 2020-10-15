@@ -1,8 +1,9 @@
-﻿using System;
-
-public enum Item
+﻿public enum Item
 {
-    Booster,
-    FoxSkin,
-    BathroomSector
+    Booster = 0, //0..99 - bonuses
+    CatSkin = 100, //100..199 - skins
+    FoxSkin = 101, 
+    KitchenSector = 200, //200..299 - sectors
+    BathroomSector = 200,
+    LivingRoomSector = 200
 }

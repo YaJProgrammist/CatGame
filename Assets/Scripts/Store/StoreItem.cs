@@ -1,7 +1,8 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System;
+using UnityEngine;
 
-public abstract class StoreItem : MonoBehaviour 
+[Serializable]
+public class StoreItem
 {
     [SerializeField]
     private string title;
@@ -35,7 +36,27 @@ public abstract class StoreItem : MonoBehaviour
         return itemId;
     }
 
-    public abstract bool TryBuy();
+    public bool TryBuy()
+    {
+        if (!DataHolder.TrySaveSpentCoins(GetCost()))
+        {
+            return false;
+        }
 
-    public abstract bool TryApply();
+        DataHolder.SaveItemAsBought(GetItemId());
+
+        return true;
+    }
+
+    public bool TryApply()
+    {
+        if (!DataHolder.TryRetrieveBoughtItem(GetItemId()))
+        {
+            return false;
+        }
+
+        DataHolder.SaveItemAsApplied(GetItemId());
+
+        return true;
+    }
 }
