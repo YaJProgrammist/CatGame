@@ -1,7 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
+
+public class DynamicLazerControllerAffectedUnityEvent : UnityEvent<UnityAction<DynamicLazerController>>
+{
+}
 
 public class DynamicLazer : Obstacle
 {
+    public DynamicLazerControllerAffectedUnityEvent DynamicLazerControllerAffected = new DynamicLazerControllerAffectedUnityEvent();
+
     [SerializeField]
     private SpriteRenderer lazerSpriteRenderer;
 
@@ -28,8 +35,7 @@ public class DynamicLazer : Obstacle
 
     protected override sealed void MakeImpact()
     {
-        // TODO
-        GameObject.Find("Player").GetComponent<HealthController>().DecreaseLivesCount();
-        // TODO
+        GameManager gameManager = GameManager.GetInstance();
+        gameManager.PlayerHealthAffected.Invoke((healthController) => healthController.DecreaseLivesCount());
     }
 }

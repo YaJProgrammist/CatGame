@@ -1,11 +1,8 @@
-﻿using UnityEngine;
-
-public class Ruby : Bonus
+﻿public class Ruby : Bonus
 {
     protected override sealed void MakeImpact()
     {
-        // TODO
-        GameObject.Find("BonusManager").GetComponent<BonusManager>().PickedUpCoinsNumber += 5;
-        // TODO
+        GameManager gameManager = GameManager.GetInstance();
+        gameManager.PickedUpCoinsNumber += 5;
     }
 }

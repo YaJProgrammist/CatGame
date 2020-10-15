@@ -1149,6 +1149,8 @@ MonoBehaviour:
   gameOverCanvas: {fileID: 955888097}
   store: {fileID: 1620543062}
   currentCoinsNumberText: {fileID: 792492045}
+  pickedUpCoinsNumberText: {fileID: 975272468}
+  finalCoinsNumberText: {fileID: 280291962}
 --- !u!4 &519446774
 Transform:
   m_ObjectHideFlags: 0
@@ -2676,6 +2678,7 @@ MonoBehaviour:
   obstaclePresets:
   - {fileID: -8294649091755681786, guid: be5376d25781de64c83fb549ef846601, type: 3}
   - {fileID: -8294649091755681786, guid: 3c80d6efef8f39e4da9c6745f264c9c2, type: 3}
+  - {fileID: -8294649091755681786, guid: 5343154a66a224d40a27efd713ea5164, type: 3}
 --- !u!114 &1386809676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2701,7 +2704,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386809674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3308094, y: 1.2657692, z: -11.977051}
+  m_LocalPosition: {x: 3.3308094, y: 1.2657692, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2722,6 +2725,7 @@ MonoBehaviour:
   obstaclePresets:
   - {fileID: 253899961509491226, guid: b34a60754040f0c40a1994e8c3b527e9, type: 3}
   - {fileID: 253899961509491226, guid: 77616897332e0ee429508c173b65ffbe, type: 3}
+  - {fileID: 253899961509491226, guid: b4405dc652d4c554a9ef78533b14a6e2, type: 3}
 --- !u!114 &1386809679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2737,6 +2741,7 @@ MonoBehaviour:
   obstaclePresets:
   - {fileID: 1230938315444431306, guid: 543aeaae7ff529846a92e7db9976401f, type: 3}
   - {fileID: 1230938315444431306, guid: 7d7613f9f8bda6a46ab18a3d848099ca, type: 3}
+  - {fileID: 2567462495709771856, guid: c3765e4482086ee4eb5c5eb950f2df24, type: 3}
 --- !u!114 &1509928559 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2637268009384358198, guid: 98d93b2c5a2441143857e76fbc4c1b1e,
@@ -3585,8 +3590,6 @@ MonoBehaviour:
   bonusPresets:
   - {fileID: 4890213334131640547, guid: f7dd849da40b6a5458275faabaa2ac0d, type: 3}
   - {fileID: 5387866563272372077, guid: fc1588eddf876a1469843a9b05d0f8c8, type: 3}
-  PickedUpCoinsNumberText: {fileID: 975272468}
-  FinalCoinsNumberText: {fileID: 280291962}
 --- !u!4 &2047411166
 Transform:
   m_ObjectHideFlags: 0

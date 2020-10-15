@@ -37,6 +37,9 @@ public class HealthController : MonoBehaviour
 
     void Start()
     {
+        GameManager gameManager = GameManager.GetInstance();
+        gameManager.PlayerHealthAffected.AddListener((action) => action(this));
+
         Reset();
     }
 

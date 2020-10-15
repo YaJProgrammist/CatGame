@@ -4,8 +4,7 @@ public class Coin : Bonus
 {
     protected override sealed void MakeImpact()
     {
-        // TODO
-        GameObject.Find("BonusManager").GetComponent<BonusManager>().PickedUpCoinsNumber++;
-        // TODO
+        GameManager gameManager = GameManager.GetInstance();
+        gameManager.PickedUpCoinsNumber++;
     }
 }

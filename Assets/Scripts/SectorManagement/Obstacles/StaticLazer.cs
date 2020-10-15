@@ -1,11 +1,21 @@
-﻿using UnityEngine;
-
-public class StaticLazer : Obstacle
+﻿public class StaticLazer : Obstacle
 {
+    public StaticLazerBehavior Behavior;
+
+    void Start()
+    {
+        Behavior = new StaticLazerBehaviorUsual();
+        Behavior.Activate(this);
+    }
+
+    public void Refresh()
+    {
+        Behavior.Activate(this);
+    }
+
     protected override sealed void MakeImpact()
     {
-        // TODO
-        GameObject.Find("Player").GetComponent<HealthController>().DecreaseLivesCount();
-        // TODO
+        GameManager gameManager = GameManager.GetInstance();
+        gameManager.PlayerHealthAffected.Invoke((healthController) => healthController.DecreaseLivesCount());
     }
 }

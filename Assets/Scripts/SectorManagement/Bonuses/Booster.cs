@@ -1,9 +1,7 @@
-﻿using UnityEngine;
-
-public class Booster : Bonus
+﻿public class Booster : Bonus
 {
     protected override sealed void MakeImpact()
     {
-        // TODO save picked up booster
+        DataHolder.SaveItemAsBought(Item.Booster);
     }
 }

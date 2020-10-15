@@ -120,6 +120,7 @@ MonoBehaviour:
   cautionSignsHolder: {fileID: 0}
   cautionSignPrefab: {fileID: 5516960608561906047, guid: f5fdea0deeb19b8449fc337133605fd4,
     type: 3}
+  currentRigidbody: {fileID: 1897177570}
   waitingTimeInSec: 2
 --- !u!70 &-8613752135511208362
 CapsuleCollider2D:

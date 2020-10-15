@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class RotatingLazer : Obstacle
+public class RotatingLazer : StaticLazer
 {
     private Vector3 rotatingVelocity;
 
@@ -12,12 +12,5 @@ public class RotatingLazer : Obstacle
     void Update()
     {
         this.transform.Rotate(rotatingVelocity);
-    }
-
-    protected override sealed void MakeImpact()
-    {
-        // TODO
-        GameObject.Find("Player").GetComponent<HealthController>().DecreaseLivesCount();
-        // TODO
     }
 }

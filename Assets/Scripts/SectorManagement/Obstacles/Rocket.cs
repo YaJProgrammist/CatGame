@@ -9,11 +9,16 @@ public class Rocket : Obstacle
     private CautionSign cautionSignPrefab;
 
     [SerializeField]
+    private Rigidbody2D currentRigidbody;
+
+    [SerializeField]
     private float waitingTimeInSec;
 
     private CautionSign currentCautionSign;
     private float timePassedInSec;
     private bool fireIsDone;
+
+    public RocketBehavior MovingBehavior { get; set; }
 
     void Start()
     {
@@ -21,6 +26,7 @@ public class Rocket : Obstacle
         currentCautionSign.Show();
         timePassedInSec = 0;
         fireIsDone = false;
+        MovingBehavior = new RocketBehaviorUsual();
     }
 
     void OnBecameInvisible()
@@ -31,7 +37,7 @@ public class Rocket : Obstacle
     void Update()
     {
         Vector2 currentCautionSignPosition = currentCautionSign.transform.position;
-        //Camera.current.OnW
+
         currentCautionSignPosition.y = cautionSignsHolder.transform.position.y + this.transform.position.y / 2.211402f * Screen.height; // TODO
         currentCautionSign.gameObject.transform.position = currentCautionSignPosition;
 
@@ -48,17 +54,21 @@ public class Rocket : Obstacle
         }
     }
 
+    public void RefreshMoving()
+    {
+        MovingBehavior.Move(currentRigidbody);
+    }
+
     private void Fire()
     {
         fireIsDone = true;
         currentCautionSign.PutIntoDangerMode();
-        this.GetComponent<Rigidbody2D>().velocity = new Vector2(-6f, 0);
+        MovingBehavior.Move(currentRigidbody);
     }
 
     protected override sealed void MakeImpact()
     {
-        // TODO
-        GameObject.Find("Player").GetComponent<HealthController>().DecreaseLivesCount();
-        // TODO
+        GameManager gameManager = GameManager.GetInstance();
+        gameManager.PlayerHealthAffected.Invoke((healthController) => healthController.DecreaseLivesCount());
     }
 }

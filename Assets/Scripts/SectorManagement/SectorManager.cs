@@ -63,16 +63,10 @@ public class SectorManager : MonoBehaviour
         nextSectorPosition.x += newSector.transform.localScale.x / 2;
     }
 
-    public void FinishGame()
-    {
-        bonusManager.FinishGame();
-    }
-
     public void Reset()
     {
         ClearAll();
         ActivateMenuSector();
-        bonusManager.Reset();
     }
 
     public void Refresh()
