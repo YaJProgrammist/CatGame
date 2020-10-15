@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleSegmentGenerator : MonoBehaviour
+public abstract class ObstacleSegmentGenerator : MonoBehaviour
 {
     [SerializeField]
     private List<ObstaclePreset> obstaclePresets;
@@ -19,6 +15,11 @@ public class ObstacleSegmentGenerator : MonoBehaviour
 
     public ObstaclePreset GetRandomObstaclePreset()
     {
+        if (obstaclePresets.Count == 0)
+        {
+            return null; // TODO error
+        }
+
         int presetNum = rand.Next(obstaclePresets.Count);
         return obstaclePresets[presetNum];
     }

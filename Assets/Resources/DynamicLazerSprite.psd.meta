@@ -1,22 +1,19 @@
 fileFormatVersion: 2
-guid: 0b08fc628da5e54478340ea77e8e54b4
+guid: 586fa023999ebe3479879b4572bc2480
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7759622958094825587
-    second: RocketSprite_0
+      213: 8000598616357743574
+    second: DynamicLazerSprite_0
   - first:
-      213: -5862871282170036903
-    second: RocketSprite_1
+      213: 6244294474901760850
+    second: DynamicLazerSprite_1
   - first:
-      213: 4211567782248260185
-    second: RocketSprite_2
+      213: -4280707976823545244
+    second: DynamicLazerSprite_0
   - first:
-      213: -1431870376741458465
-    second: RocketSprite_0
-  - first:
-      213: 6323014164389818224
-    second: RocketSprite_1
+      213: 1849112394085379234
+    second: DynamicLazerSprite_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -114,64 +111,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RocketSprite_2
+      name: DynamicLazerSprite_0
       rect:
         serializedVersion: 2
-        x: 35
-        y: 28
-        width: 345
-        height: 165
+        x: 0
+        y: 45
+        width: 100
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9522368859e727a30800000000000000
-      internalID: 4211567782248260185
+      spriteID: 462604676ced794c0800000000000000
+      internalID: -4280707976823545244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RocketSprite_0
+      name: DynamicLazerSprite_1
       rect:
         serializedVersion: 2
-        x: 35
-        y: 403
-        width: 346
-        height: 165
+        x: 100
+        y: 0
+        width: 100
+        height: 122
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fddabed8a79f02ce0800000000000000
-      internalID: -1431870376741458465
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RocketSprite_1
-      rect:
-        serializedVersion: 2
-        x: 35
-        y: 218
-        width: 346
-        height: 165
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 07fe73ab1ebdfb750800000000000000
-      internalID: 6323014164389818224
+      spriteID: 2ac2b37eced59a910800000000000000
+      internalID: 1849112394085379234
       vertices: []
       indices: 
       edges: []

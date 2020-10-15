@@ -234,7 +234,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 6045890247187600994}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 7d613484da5ad9f47ac596c93b866a74, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -289,7 +289,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7249661334682234463}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.008, y: 0.45, z: -8}
+  m_LocalPosition: {x: 0.008, y: 0.499, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1.1720799}
   m_Children: []
   m_Father: {fileID: 2664230927991472459}
@@ -304,7 +304,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 7249661334682234463}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 7d613484da5ad9f47ac596c93b866a74, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -319,7 +319,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.1}
+  m_Size: {x: 1.1, y: 0.1}
   m_EdgeRadius: 0
 --- !u!114 &953898914
 MonoBehaviour:

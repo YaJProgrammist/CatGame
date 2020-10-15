@@ -49,7 +49,7 @@ public class SectorManager : MonoBehaviour
         newSector.EndTriggered.AddListener(MoveOn);
 
         bonusManager.AttachBonusPresetToSector(newSector);
-        obstacleManager.AttachObstaclePresetToSector(newSector);        
+        obstacleManager.AttachObstaclePresetsToSector(newSector);        
 
         sectorQueue.Enqueue(newSector);
 
