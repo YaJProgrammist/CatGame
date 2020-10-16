@@ -17,13 +17,20 @@ public class Store : MonoBehaviour
     private Canvas storeCanvas;
 
     [SerializeField]
+    private Image storeBackground;
+
+    [SerializeField]
     private Text storeCoinsNumberText;
+
+    [SerializeField]
+    private List<StoreModeFactory> storeModeFactories;
 
     private float scaleFactor;
     private List<StoreItemVisualizer> vizualizedItemsList = new List<StoreItemVisualizer>();
 
     void Start()
     {
+        SetStoreMode();
         DisplayAllItems();
     }
 
@@ -42,6 +49,32 @@ public class Store : MonoBehaviour
     {
         storeCoinsNumberText.text = DataHolder.GetCurrentCoinsNumber().ToString();
         RefreshAllItems();
+    }
+
+    private void SetStoreMode()
+    {
+        DesignMode currentDesignMode = DataHolder.GetCurrentDesignMode();
+        StoreModeFactory factory = GetStoreModeFactoryForDesignMode(currentDesignMode);
+
+        if (factory == null)
+        {
+            factory = GetStoreModeFactoryForDesignMode(DesignMode.Usual);
+        }
+
+        storeBackground.color = factory.GetBackgroundColor();
+    }
+
+    private StoreModeFactory GetStoreModeFactoryForDesignMode(DesignMode designMode)
+    {
+        foreach (StoreModeFactory factory in storeModeFactories)
+        {
+            if (factory.GetСorrespondingDesignMode() == designMode)
+            {
+                return factory;
+            }
+        }
+
+        return null;
     }
 
     private void DisplayAllItems()

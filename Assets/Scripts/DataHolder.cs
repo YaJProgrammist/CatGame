@@ -1,10 +1,14 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Stores player progress, settings etc. during the game and between game loads.
+ */
 static class DataHolder
 {
-    private static string coinsNumberName = "CoinsNumber";
-    private static string initializationDoneName = "InitializationDone";
+    private static string coinsNumberName = "CoinsNumber"; //name of total coins number key
+    private static string initializationDoneName = "InitializationDone"; //name of initialization done key
+    private static string designModeName = "DesignMode"; //name of design mode key
 
     static DataHolder()
     {
@@ -14,6 +18,7 @@ static class DataHolder
         }
     }
 
+    //Called on first game load
     public static void SetInitialSettings()
     {
         PlayerPrefs.DeleteAll();
@@ -28,6 +33,7 @@ static class DataHolder
         PlayerPrefs.SetInt(initializationDoneName, 1);
     }
 
+    //Add coins amount to storage
     public static void SaveEarnedCoins(int coinsNumber)
     {
         if (PlayerPrefs.HasKey(coinsNumberName))
@@ -38,9 +44,10 @@ static class DataHolder
         PlayerPrefs.SetInt(coinsNumberName, coinsNumber);
     }
 
+    //Increments number of given items in the storage
     public static void PutItemIntoStorage(Item item)
     {
-        string keyName = GetBoughtKeyForItem(item);
+        string keyName = GetAvailableKeyForItem(item);
 
         int prevBoughtCount = 0;
 
@@ -52,9 +59,11 @@ static class DataHolder
         PlayerPrefs.SetInt(keyName, prevBoughtCount + 1);
     }
 
-    public static bool TryRetrieveBoughtItem(Item item)
+    //Attempts to remove one copy of item from storage. 
+    //Returns if operation was possible.
+    public static bool TryRetrieveAvailableItem(Item item)
     {
-        string keyName = GetBoughtKeyForItem(item);
+        string keyName = GetAvailableKeyForItem(item);
 
         if (!PlayerPrefs.HasKey(keyName))
         {
@@ -73,9 +82,10 @@ static class DataHolder
         return true;
     }
 
-    public static int GetItemBoughtNumber(Item item)
+    //Returns count of given items in storage
+    public static int GetItemAvailableNumber(Item item)
     {
-        string keyName = GetBoughtKeyForItem(item);
+        string keyName = GetAvailableKeyForItem(item);
 
         if (!PlayerPrefs.HasKey(keyName))
         {
@@ -87,7 +97,7 @@ static class DataHolder
 
     public static void SaveItemAsApplied(Item item)
     {
-        if (ItemCategoryManager.GetItemCategory(item) == ItemCategory.Skin && item != GetCurrentPLayerSkin())
+        if (ItemCategoryManager.GetItemCategory(item) == ItemCategory.Skin && item != GetCurrentPlayerSkin())
         {
             PutAppliedSkinIntoStorage();
         }
@@ -105,6 +115,8 @@ static class DataHolder
         return (PlayerPrefs.GetInt(GetAppliedKeyForItem(item)) != 0);
     }
 
+    //Attempts to remove given amount of coins from storage.
+    //Returns if operation was possible.
     public static bool TrySaveSpentCoins(int coinsNumber)
     {
         coinsNumber *= -1;
@@ -135,7 +147,7 @@ static class DataHolder
         return PlayerPrefs.GetInt(coinsNumberName);
     }
 
-    public static Item GetCurrentPLayerSkin()
+    public static Item GetCurrentPlayerSkin()
     {
         List<Item> skins = ItemCategoryManager.GetAllItemsInCategory(ItemCategory.Skin);
 
@@ -152,19 +164,33 @@ static class DataHolder
         return defaultItem;
     }
 
-    private static string GetBoughtKeyForItem(Item item)
+    public static DesignMode GetCurrentDesignMode()
     {
-        return item.ToString() + "IsBought";
+        if (!PlayerPrefs.HasKey(designModeName))
+        {
+            PlayerPrefs.SetInt(designModeName, (int)DesignMode.Usual);
+            return DesignMode.Usual;
+        }
+
+        return (DesignMode)PlayerPrefs.GetInt(designModeName);
     }
 
+    //Builds key that contains value "if item is available"
+    private static string GetAvailableKeyForItem(Item item)
+    {
+        return item.ToString() + "IsAvailable";
+    }
+
+    //Builds key that contains value "if item is applied"
     private static string GetAppliedKeyForItem(Item item)
     {
         return item.ToString() + "IsApplied";
     }
 
+    //"Takes" current player skin "off" and stores it
     private static void PutAppliedSkinIntoStorage()
     {
-        Item currentPlayerSkin = GetCurrentPLayerSkin();
+        Item currentPlayerSkin = GetCurrentPlayerSkin();
         PutItemIntoStorage(currentPlayerSkin);
         SaveItemAsUnapplied(currentPlayerSkin);
     }

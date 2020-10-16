@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
 
+/*
+ * Responsible for applying correct current skin to player.
+ */
 public class SkinController : MonoBehaviour
 {
     [Serializable]
-    struct SkinVisualization
+    struct SkinInfo
     {
         public string skinTitle;
         public Sprite SkinSprite;
@@ -14,7 +17,7 @@ public class SkinController : MonoBehaviour
     }
 
     [SerializeField]
-    private List<SkinVisualization> skinVisualizations;
+    private List<SkinInfo> skinInfos; //have to be given in the same order that Skin items are given in
 
     [SerializeField]
     private SpriteRenderer playerSpriteRenderer;
@@ -22,7 +25,7 @@ public class SkinController : MonoBehaviour
     [SerializeField]
     private Animator playerAnimator;
 
-    private bool playerSkinIsSet;
+    private bool playerSkinIsSet; //if player skin was set at least once
     private Item currentPlayerSkin;
 
     void Start()
@@ -33,22 +36,23 @@ public class SkinController : MonoBehaviour
 
     public void RefreshSkin()
     {
-        Item newPlayerSkin = DataHolder.GetCurrentPLayerSkin();
+        Item newPlayerSkin = DataHolder.GetCurrentPlayerSkin();
+
+        //Get number of skin in skinInfos (same as number of skin in Skin category)
         int skinNumber = ItemCategoryManager.GetNumberOfItemInCategory(newPlayerSkin);
 
         if (playerSkinIsSet == false || currentPlayerSkin != newPlayerSkin)
         {
-            SetSkinVisualization(skinNumber);
+            SetSkin(skinNumber);
             currentPlayerSkin = newPlayerSkin;
+            playerSkinIsSet = true;
         }
-
-        playerSkinIsSet = true;
     }
 
-    private void SetSkinVisualization(int skinNumber)
+    private void SetSkin(int skinNumber)
     {
-        SkinVisualization skinVisualization = skinVisualizations[skinNumber];
-        playerSpriteRenderer.sprite = skinVisualization.SkinSprite;
-        playerAnimator.runtimeAnimatorController = skinVisualization.SkinAnimatorController;
+        SkinInfo skinInfo = skinInfos[skinNumber];
+        playerSpriteRenderer.sprite = skinInfo.SkinSprite;
+        playerAnimator.runtimeAnimatorController = skinInfo.SkinAnimatorController;
     }
 }

@@ -59,7 +59,7 @@ public class StoreItemVisualizer : MonoBehaviour
             return;
         }
 
-        if (DataHolder.GetItemBoughtNumber(storeItem.GetItemId()) > 0)
+        if (DataHolder.GetItemAvailableNumber(storeItem.GetItemId()) > 0)
         {
             SwitchToApply();
             return;

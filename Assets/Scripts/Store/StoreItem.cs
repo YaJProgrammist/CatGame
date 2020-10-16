@@ -50,7 +50,7 @@ public class StoreItem
 
     public bool TryApply()
     {
-        if (!DataHolder.TryRetrieveBoughtItem(GetItemId()))
+        if (!DataHolder.TryRetrieveAvailableItem(GetItemId()))
         {
             return false;
         }

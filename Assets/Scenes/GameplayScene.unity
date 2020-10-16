@@ -477,8 +477,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecd1ac971277e741b5e2f26c1ef5d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skinVisualizations:
-  - skinTitle: CatSkin
+  skinInfos:
+  - skinTitle: Cat skin
     SkinSprite: {fileID: -5259240243243289857, guid: 98e44a1ee3705884d8fba0266c61a324,
       type: 3}
     SkinAnimatorController: {fileID: 9100000, guid: 0af8b31c425ae9948b9a72716c34305a,
@@ -3506,7 +3506,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 519446773}
-        m_MethodName: ResetPregress
+        m_MethodName: ResetProgress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3705,6 +3705,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1620543063}
   - component: {fileID: 1620543062}
+  - component: {fileID: 1620543061}
+  - component: {fileID: 1620543065}
+  - component: {fileID: 1620543064}
   m_Layer: 0
   m_Name: StoreManager
   m_TagString: Untagged
@@ -3712,6 +3715,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1620543061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620543060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80433825e23ab8444a2d09bf25cbfb65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundColor: {r: 1, g: 1, b: 1, a: 0.92156863}
+  correspondingDesignMode: 0
 --- !u!114 &1620543062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3755,7 +3772,12 @@ MonoBehaviour:
     cost: 1000
     itemId: 201
   storeCanvas: {fileID: 1711002252}
+  storeBackground: {fileID: 2015000679}
   storeCoinsNumberText: {fileID: 856309706}
+  storeModeFactories:
+  - {fileID: 1620543061}
+  - {fileID: 1620543065}
+  - {fileID: 1620543064}
 --- !u!4 &1620543063
 Transform:
   m_ObjectHideFlags: 0
@@ -3770,6 +3792,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1620543064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620543060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80433825e23ab8444a2d09bf25cbfb65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundColor: {r: 0.07742971, g: 0.5660378, b: 0.19802131, a: 0.89411765}
+  correspondingDesignMode: 2
+--- !u!114 &1620543065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620543060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80433825e23ab8444a2d09bf25cbfb65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundColor: {r: 0.8584906, g: 0.61900043, b: 0.23891956, a: 0.92156863}
+  correspondingDesignMode: 1
 --- !u!1 &1680309193
 GameObject:
   m_ObjectHideFlags: 0
