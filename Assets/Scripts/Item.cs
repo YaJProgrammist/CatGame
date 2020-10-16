@@ -1,4 +1,7 @@
-﻿public enum Item
+﻿/*
+ * Buyable/applyable items
+ */
+public enum Item
 {
     Booster = 0, //0..99 - bonuses
     CatSkin = 100, //100..199 - skins

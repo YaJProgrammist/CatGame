@@ -1,3 +1,6 @@
-﻿public class DynamicLazerSegmentGenerator : ObstacleSegmentGenerator
+﻿/*
+ * Responsible for dynamic lazers generation.
+ */
+public class DynamicLazerSegmentGenerator : ObstacleSegmentGenerator
 {
 }

@@ -5052,11 +5052,6 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 0af8b31c425ae9948b9a72716c34305a, type: 2}
-    - target: {fileID: 1313860387164283732, guid: 98d93b2c5a2441143857e76fbc4c1b1e,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1916562802598056114, guid: 98d93b2c5a2441143857e76fbc4c1b1e,
         type: 3}
       propertyPath: mainCamera
@@ -5132,6 +5127,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1313860387164283732, guid: 98d93b2c5a2441143857e76fbc4c1b1e, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98d93b2c5a2441143857e76fbc4c1b1e, type: 3}

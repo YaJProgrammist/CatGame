@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Responsible for dynamic lazer states.
+ */
 public class DynamicLazerController : MonoBehaviour
 {
+    //Cycle of dynamic lazer changing states
     [Serializable]
     public class DynamicLazerCycle
     {
-        public float WaitingTime;
-        public float CautionTime;
-        public float DangerTime;
+        public float WaitingTime; //time during which lazer is unactive
+        public float CautionTime; //time during which lazer is in caution mode
+        public float DangerTime; //time during which lazer is in danger mode
     }
 
     [SerializeField]
@@ -33,6 +37,7 @@ public class DynamicLazerController : MonoBehaviour
         behavior.Update();
     }
 
+    //Slows lazer down
     public void Weaken()
     {
         behavior = new DynamicLazerCycledBehaviorWeakened(cycles, lazer);

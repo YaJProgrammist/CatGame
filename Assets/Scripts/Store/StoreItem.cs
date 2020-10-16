@@ -55,7 +55,7 @@ public class StoreItem
             return false;
         }
 
-        DataHolder.SaveItemAsApplied(GetItemId());
+        DataHolder.MarkItemAsApplied(GetItemId());
 
         return true;
     }

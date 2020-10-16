@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Responsible for sector obstacles of a certain type generation.
+ */
 public abstract class ObstacleSegmentGenerator : MonoBehaviour
 {
     [SerializeField]
@@ -17,7 +20,7 @@ public abstract class ObstacleSegmentGenerator : MonoBehaviour
     {
         if (obstaclePresets.Count == 0)
         {
-            return null; // TODO error
+            return null;
         }
 
         int presetNum = rand.Next(obstaclePresets.Count);

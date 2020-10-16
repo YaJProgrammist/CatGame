@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour
     //Get height of sectors
     public float GetPlaySpaceHeight()
     {
-        return sectorManager.GetSectorHeight();
+        return sectorManager.GetPlaySpaceHeight();
     }
 
     //Refresh data displayed in main menu

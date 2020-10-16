@@ -1,4 +1,7 @@
-﻿public enum ItemCategory
+﻿/*
+ * Buyable/applyable items categories
+ */
+public enum ItemCategory
 {
     Bonus, 
     Skin, 

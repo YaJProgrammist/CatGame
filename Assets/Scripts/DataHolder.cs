@@ -25,10 +25,10 @@ static class DataHolder
 
         PlayerPrefs.SetInt(coinsNumberName, 100);
 
-        SaveItemAsApplied(Item.CatSkin);
+        MarkItemAsApplied(Item.CatSkin);
 
-        SaveItemAsApplied(Item.KitchenSector);
-        SaveItemAsApplied(Item.LivingRoomSector);
+        MarkItemAsApplied(Item.KitchenSector);
+        MarkItemAsApplied(Item.LivingRoomSector);
 
         PlayerPrefs.SetInt(initializationDoneName, 1);
     }
@@ -95,7 +95,7 @@ static class DataHolder
         return PlayerPrefs.GetInt(keyName);
     }
 
-    public static void SaveItemAsApplied(Item item)
+    public static void MarkItemAsApplied(Item item)
     {
         if (ItemCategoryManager.GetItemCategory(item) == ItemCategory.Skin && item != GetCurrentPlayerSkin())
         {
@@ -105,7 +105,7 @@ static class DataHolder
         PlayerPrefs.SetInt(GetAppliedKeyForItem(item), 1);
     }
 
-    public static void SaveItemAsUnapplied(Item item)
+    public static void MarkItemAsUnapplied(Item item)
     {
         PlayerPrefs.SetInt(GetAppliedKeyForItem(item), 0);
     }
@@ -192,6 +192,6 @@ static class DataHolder
     {
         Item currentPlayerSkin = GetCurrentPlayerSkin();
         PutItemIntoStorage(currentPlayerSkin);
-        SaveItemAsUnapplied(currentPlayerSkin);
+        MarkItemAsUnapplied(currentPlayerSkin);
     }
 }

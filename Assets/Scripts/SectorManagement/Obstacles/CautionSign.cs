@@ -1,13 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * UI image that appears in the way of rocket.
+ */
+[RequireComponent(typeof(Image))]
 public class CautionSign : MonoBehaviour
 {
     [SerializeField]
-    private Sprite usualIcon;
+    private Sprite usualIcon; //icon to show when rocket isn't flying
 
     [SerializeField]
-    private Sprite dangerIcon;
+    private Sprite dangerIcon; //icon to show when rocket isn flying
 
     void Start()
     {
@@ -24,6 +28,7 @@ public class CautionSign : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+    //Called when rocket starts to fly
     public void PutIntoDangerMode()
     {
         this.GetComponent<Image>().sprite = dangerIcon;

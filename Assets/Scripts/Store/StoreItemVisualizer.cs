@@ -85,7 +85,7 @@ public class StoreItemVisualizer : MonoBehaviour
     {
         if (!storeItem.TryBuy())
         {
-            return; // TODO error not enough money
+            return; 
         }
 
         SwitchToApply();
@@ -97,7 +97,7 @@ public class StoreItemVisualizer : MonoBehaviour
     {
         if (!storeItem.TryApply())
         {
-            return; // TODO error not bought
+            return; 
         }
 
         applyButton.interactable = false;

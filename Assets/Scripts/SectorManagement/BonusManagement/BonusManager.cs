@@ -2,6 +2,9 @@
 using UnityEditor.Animations;
 using UnityEngine;
 
+/*
+ * Responsible for sector bonuses generation.
+ */
 public class BonusManager : MonoBehaviour
 {
     [SerializeField]
@@ -21,12 +24,14 @@ public class BonusManager : MonoBehaviour
         ChangeComponentsSkin(bonusPreset, sector.ComponentsSkinFactory);
     }
 
+    //Change default bonus skins to skins that match the sector's design
     private void ChangeComponentsSkin(BonusPreset bonusPreset, SectorComponentsSkinFactory factory)
     {
         ChangeCoinsSkin(bonusPreset, factory.CoinAnimatorController);
         ChangeRubysSkins(bonusPreset, factory.RubySprite);
     }
 
+    //Change default coins skins to skins that match the sector's design
     private void ChangeCoinsSkin(BonusPreset bonusPreset, AnimatorController coinAnimatorController)
     {
         Coin[] coinsInPreset = bonusPreset.GetComponentsInChildren<Coin>();
@@ -37,6 +42,7 @@ public class BonusManager : MonoBehaviour
         }
     }
 
+    //Change default rubys skins to skins that match the sector's design
     private void ChangeRubysSkins(BonusPreset bonusPreset, Sprite rubySprite)
     {
         Ruby[] rubysInPreset = bonusPreset.GetComponentsInChildren<Ruby>();

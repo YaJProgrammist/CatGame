@@ -57,7 +57,7 @@ public class MovingBehaviorController : MonoBehaviour
         //If booster is applied then use it
         if (DataHolder.GetIfItemIsApplied(Item.Booster))
         {
-            DataHolder.SaveItemAsUnapplied(Item.Booster);
+            DataHolder.MarkItemAsUnapplied(Item.Booster);
             SwitchToBoost();
             return;
         }

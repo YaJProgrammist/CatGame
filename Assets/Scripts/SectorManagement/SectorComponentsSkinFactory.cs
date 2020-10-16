@@ -1,6 +1,9 @@
 ﻿using UnityEditor.Animations;
 using UnityEngine;
 
+/*
+ * Stores elements of sector components that form a single design.
+ */
 public class SectorComponentsSkinFactory : MonoBehaviour
 {
     [SerializeField]
@@ -31,7 +34,7 @@ public class SectorComponentsSkinFactory : MonoBehaviour
         }
     }
 
-    public Sector GetNewSector()
+    public Sector InstantiateNewSector()
     {
         Sector newSector = Instantiate(sectorPrefab.GetComponent<Sector>());
         newSector.ComponentsSkinFactory = this;

@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-
+﻿/*
+ * Bonus that slows present on scene rockets down when picked up.
+ */
 public class RocketWeakener : Bonus
 {
     protected override sealed void MakeImpact()

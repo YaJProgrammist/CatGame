@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Responsible for sector obstacles generation.
+ */
 public class ObstacleManager : MonoBehaviour
 {
     [SerializeField]
@@ -14,12 +17,6 @@ public class ObstacleManager : MonoBehaviour
     void Start()
     {
         rand = new System.Random();
-    }
-
-    private ObstacleSegmentGenerator GetRandomObstacleSegmentGenerator<T>(List<T> obstacleSegmentGenerators) where T : ObstacleSegmentGenerator
-    {
-        int generatorNum = rand.Next(obstacleSegmentGenerators.Count);
-        return obstacleSegmentGenerators[generatorNum];
     }
 
     private void AttachObstaclePresetToSector(Sector sector, ObstacleSegmentGenerator obstacleGenerator)
@@ -53,7 +50,7 @@ public class ObstacleManager : MonoBehaviour
         return generators;
     }
 
-    public void AttachObstaclePresetsToSector(Sector sector)
+    public void AttachRandomObstaclePresetsToSector(Sector sector)
     {
         List<ObstacleSegmentGenerator> generators = GetListOfRandomObstacleGenerators(obstacleSegmentsPerSectorNumber);
 

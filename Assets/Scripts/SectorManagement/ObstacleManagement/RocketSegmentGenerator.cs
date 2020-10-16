@@ -1,3 +1,7 @@
-﻿public class RocketSegmentGenerator : ObstacleSegmentGenerator
+﻿/*
+ * Responsible for rockets generation.
+ */
+
+public class RocketSegmentGenerator : ObstacleSegmentGenerator
 {
 }

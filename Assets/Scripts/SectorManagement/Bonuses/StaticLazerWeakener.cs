@@ -1,4 +1,7 @@
-﻿public class StaticLazerWeakener : Bonus
+﻿/*
+ * Bonus that turns off present on scene static lazers when picked up.
+ */
+public class StaticLazerWeakener : Bonus
 {
     protected override sealed void MakeImpact()
     {

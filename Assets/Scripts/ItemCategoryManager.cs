@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
 
+/*
+ * Responsible for matching items with their categories.
+ */
 static class ItemCategoryManager
 {
-    private static readonly int knownCategoriesCount;
-    private static readonly int itemsPerCategoryCount;
+    private static readonly int knownCategoriesCount; //count of categories apart from Unknown
+    private static readonly int itemsPerCategoryCount; //length of category ranges
 
     static ItemCategoryManager()
     {
@@ -33,6 +36,7 @@ static class ItemCategoryManager
         {
             Item item = (Item)itemInd;
 
+            //If such item doesn't exist
             if (!item.HasFlag(item))
             {
                 break;
@@ -50,6 +54,8 @@ static class ItemCategoryManager
         return (Item)defaultCategoryItemId;
     }
 
+    //Returns number of item in its category.
+    //If its category is unknown, returns -1.
     public static int GetNumberOfItemInCategory(Item item)
     {
         int itemId = (int)item;

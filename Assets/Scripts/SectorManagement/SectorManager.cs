@@ -1,13 +1,16 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Responsible for sectors generation and removal.
+ */
 public class SectorManager : MonoBehaviour 
 {
     [SerializeField]
     private List<SectorComponentsSkinFactory> sectorComponentsSkinFactories;
 
     [SerializeField]
-    private MenuSector menuSector;
+    private MenuSector menuSector; //sector that is displayed in main menu
 
     [SerializeField]
     private BonusManager bonusManager;
@@ -15,10 +18,12 @@ public class SectorManager : MonoBehaviour
     [SerializeField]
     private ObstacleManager obstacleManager;
 
+    //sectorComponentsSkinFactories that were marked as applied in Storage
     private List<SectorComponentsSkinFactory> appliedSectorComponentsSkinFactories;
-    private Queue<Sector> sectorQueue;
-    private Vector3 startSectorPosition;
-    private Vector3 nextSectorPosition;
+
+    private Queue<Sector> sectorQueue; //queue of sectors that are present in game
+    private Vector3 startSectorPosition; //position of left wall of the first sector after menu sector
+    private Vector3 nextSectorPosition; //position of left wall of next sector
     private System.Random rand;
 
     void Start()
@@ -29,8 +34,8 @@ public class SectorManager : MonoBehaviour
         startSectorPosition = new Vector3
         (
             menuSector.transform.position.x + menuSector.transform.localScale.x / 2,
-            1.26f,
-            -8
+            menuSector.transform.position.y,
+            menuSector.transform.position.z
         );
 
         nextSectorPosition = startSectorPosition;
@@ -42,16 +47,22 @@ public class SectorManager : MonoBehaviour
         RefreshAllowedFactories();
     }
 
+    //Generate next piece of game space
     public void MoveOn()
     {
         SectorComponentsSkinFactory factory = GetRandomSectorComponentsSkinFactory();
-        Sector newSector = factory.GetNewSector();
+        Sector newSector = factory.InstantiateNewSector();
+
+        //put nextSectorPosition on the center of the generated sector
         nextSectorPosition.x += newSector.transform.localScale.x / 2;
+
         newSector.transform.position = nextSectorPosition;
+
+        //Listen if trigger of sector pre-end is triggered - then generate next piece of game space
         newSector.EndTriggered.AddListener(MoveOn);
 
         bonusManager.AttachBonusPresetToSector(newSector);
-        obstacleManager.AttachObstaclePresetsToSector(newSector);        
+        obstacleManager.AttachRandomObstaclePresetsToSector(newSector);        
 
         sectorQueue.Enqueue(newSector);
 
@@ -60,25 +71,30 @@ public class SectorManager : MonoBehaviour
             sectorQueue.Dequeue().Remove();
         }
 
+        //put nextSectorPosition on the right wall of the generated sector
         nextSectorPosition.x += newSector.transform.localScale.x / 2;
     }
 
+    //Return to state of main menu open
     public void Reset()
     {
         ClearAll();
         ActivateMenuSector();
     }
 
+    //Refresh generation data (factories that are allowed to use to generate sectors)
     public void Refresh()
     {
         RefreshAllowedFactories();
     }
 
-    public float GetSectorHeight()
+    //Get height of all sectors
+    public float GetPlaySpaceHeight()
     {
         return menuSector.transform.localScale.y;
     }
 
+    //Remove all sectors that are still present
     private void ClearAll()
     {
         foreach (Sector sector in sectorQueue)
@@ -91,6 +107,7 @@ public class SectorManager : MonoBehaviour
         nextSectorPosition = startSectorPosition;
     }
 
+    //Refresh info about which factories are allowed to use in sectors generation
     private void RefreshAllowedFactories()
     {
         foreach (SectorComponentsSkinFactory factory in sectorComponentsSkinFactories)
@@ -108,6 +125,7 @@ public class SectorManager : MonoBehaviour
         return appliedSectorComponentsSkinFactories[factoryNum];
     }
 
+    //Show sector that is displayed in main menu
     private void ActivateMenuSector()
     {
         menuSector.Activate();

@@ -1,4 +1,7 @@
-﻿public class DynamicLazerWeakener : Bonus
+﻿/*
+ * Bonus that slows present on scene dynamic lazers down when picked up.
+ */
+public class DynamicLazerWeakener : Bonus
 {
     protected override sealed void MakeImpact()
     {

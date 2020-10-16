@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2059710023397193144}
   - component: {fileID: 8924849693563575747}
-  - component: {fileID: 4354565866639129412}
+  - component: {fileID: 6581608725515151606}
   m_Layer: 0
   m_Name: Floor2D
   m_TagString: Untagged
@@ -58,7 +58,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.1}
   m_EdgeRadius: 0
---- !u!114 &4354565866639129412
+--- !u!114 &6581608725515151606
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 144299122206843793}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2964bc22771a8a4e9b5c1b054276956, type: 3}
+  m_Script: {fileID: 11500000, guid: 6934eb5e43c32124bb5ed4ee407deb8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1928658385683727616
@@ -80,7 +80,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8342381222902382203}
   - component: {fileID: 4539204845643122139}
-  - component: {fileID: 2690401128961697963}
   m_Layer: 0
   m_Name: Ceiling2D
   m_TagString: Untagged
@@ -128,18 +127,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1, y: 0.1}
   m_EdgeRadius: 0
---- !u!114 &2690401128961697963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1928658385683727616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2964bc22771a8a4e9b5c1b054276956, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2938782315933374606
 GameObject:
   m_ObjectHideFlags: 0

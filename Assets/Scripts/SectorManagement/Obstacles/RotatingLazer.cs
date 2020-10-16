@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/*
+ * Static lazer that rotates around its center.
+ */
 public class RotatingLazer : StaticLazer
 {
     private Vector3 rotatingVelocity;

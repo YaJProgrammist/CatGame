@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/*
+ * Bonus that gives player 5 coins when picked up.
+ */
 [RequireComponent(typeof(SpriteRenderer))]
 public class Ruby : Bonus
 {

@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+/*
+ * Collider that is driven by user actions.
+ * "Main character" of the game.
+ */
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
@@ -12,7 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private HealthController healthController;
 
-    private Vector3 startPlayerPosition;
+    private Vector3 startPlayerPosition; //position of player in main menu
 
     void Start()
     {
@@ -21,7 +25,7 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (TryHandleColliderAsWall(collision.collider))
+        if (TryHandleColliderAsFloor(collision.collider))
         {
             return;
         }
@@ -29,6 +33,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
+        //Ignore triggers when boost mode is on
         if (movingBehaviorController.IsBoosted)
         {
             return;
@@ -55,6 +60,7 @@ public class Player : MonoBehaviour
         movingBehaviorController.StopMoving();
     }
    
+    //Set properties into state of the game start
     public void Reset()
     {
         StopMoving();
@@ -62,22 +68,25 @@ public class Player : MonoBehaviour
         this.healthController.Reset();
     }
 
+    //Refresh player data (in this case - refresh current player skin)
     public void Refresh()
     {
         skinController.RefreshSkin();
     }
 
+    //Move player to its position in main menu
     private void MoveToStart()
     {
         this.transform.position = startPlayerPosition;
         movingBehaviorController.MoveCamera();
     }
 
-    private bool TryHandleColliderAsWall(Collider2D collider)
+    private bool TryHandleColliderAsFloor(Collider2D collider)
     {
-        Wall wall = collider.gameObject.GetComponent<Wall>();
+        Floor floor = collider.gameObject.GetComponent<Floor>();
 
-        if (wall != null)
+        //If collision happened with floor
+        if (floor != null)
         {
             movingBehaviorController.SwitchToRun();
 
@@ -91,6 +100,7 @@ public class Player : MonoBehaviour
     {
         Bonus bonus = collider.gameObject.GetComponent<Bonus>();
 
+        //If collision happened with bonus
         if (bonus != null)
         {
             bonus.PickUp();
@@ -105,6 +115,7 @@ public class Player : MonoBehaviour
     {
         Obstacle obstacle = collider.gameObject.GetComponent<Obstacle>();
 
+        //If collision happened with obstacle
         if (obstacle != null)
         {
             obstacle.HandleCollision();
