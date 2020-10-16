@@ -20,10 +20,10 @@ public class StoreItemVisualizer : MonoBehaviour
     private Image itemTargetImage;
 
     [SerializeField]
-    private Text costText;
+    private Text costText; //UI text that displays item cost
 
     [SerializeField]
-    private Text titleText;
+    private Text titleText; //UI text that displays item title
 
     [SerializeField]
     private Button buyButton;
@@ -66,6 +66,11 @@ public class StoreItemVisualizer : MonoBehaviour
         }
 
         SwitchToBuy();
+
+        if (!ItemIsAffordable(storeItem))
+        {
+            buyButton.interactable = false;
+        }
     }
 
     private void SwitchToBuy()
@@ -102,6 +107,18 @@ public class StoreItemVisualizer : MonoBehaviour
 
         applyButton.interactable = false;
 
-        ItemApplied?.Invoke(storeItem.GetItemId()) ;
+        ItemApplied?.Invoke(storeItem.GetItemId());
+    }
+
+    private bool ItemIsAffordable(StoreItem storeItem)
+    {
+        int playerCoinsCount = DataHolder.GetCurrentCoinsNumber();
+        
+        if (playerCoinsCount >= storeItem.GetCost())
+        {
+            return true;
+        }
+
+        return false;
     }
 }
