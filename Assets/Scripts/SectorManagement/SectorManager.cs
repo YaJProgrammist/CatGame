@@ -33,7 +33,7 @@ public class SectorManager : MonoBehaviour
 
         startSectorPosition = new Vector3
         (
-            menuSector.transform.position.x + menuSector.transform.localScale.x / 2,
+            menuSector.transform.position.x + menuSector.transform.localScale.x,
             menuSector.transform.position.y,
             menuSector.transform.position.z
         );
@@ -53,9 +53,6 @@ public class SectorManager : MonoBehaviour
         SectorComponentsSkinFactory factory = GetRandomSectorComponentsSkinFactory();
         Sector newSector = factory.InstantiateNewSector();
 
-        //put nextSectorPosition on the center of the generated sector
-        nextSectorPosition.x += newSector.transform.localScale.x / 2;
-
         newSector.transform.position = nextSectorPosition;
 
         //Listen if trigger of sector pre-end is triggered - then generate next piece of game space
@@ -71,8 +68,7 @@ public class SectorManager : MonoBehaviour
             sectorQueue.Dequeue().Remove();
         }
 
-        //put nextSectorPosition on the right wall of the generated sector
-        nextSectorPosition.x += newSector.transform.localScale.x / 2;
+        nextSectorPosition.x += newSector.transform.localScale.x;
     }
 
     //Return to state of main menu open

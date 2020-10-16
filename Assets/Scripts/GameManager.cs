@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
     private Text finalCoinsNumberText; 
 
     private int _pickedUpCoinsNumber;
+    private int _distanceCovered;
 
     //Count of coins that have been picked up during current game
     public int PickedUpCoinsNumber
@@ -73,6 +74,17 @@ public class GameManager : MonoBehaviour
             pickedUpCoinsNumberText.text = value.ToString();
         }
     }
+
+    /*public float DistanceCovered
+    {
+        get { return _distanceCovered; }
+
+        set
+        {
+            _distanceCovered = value;
+            distanceCoveredText.text = value.ToString();
+        }
+    }*/
 
     void Start()
     {

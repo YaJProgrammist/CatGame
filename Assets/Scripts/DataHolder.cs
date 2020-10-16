@@ -6,6 +6,7 @@ using UnityEngine;
  */
 static class DataHolder
 {
+    private static string distanceRecordName = "DistanceRecord"; //name of distance record key
     private static string coinsNumberName = "CoinsNumber"; //name of total coins number key
     private static string initializationDoneName = "InitializationDone"; //name of initialization done key
     private static string designModeName = "DesignMode"; //name of design mode key
@@ -23,6 +24,8 @@ static class DataHolder
     {
         PlayerPrefs.DeleteAll();
 
+        PlayerPrefs.SetFloat(distanceRecordName, 0);
+
         PlayerPrefs.SetInt(coinsNumberName, 100);
 
         MarkItemAsApplied(Item.CatSkin);
@@ -31,6 +34,22 @@ static class DataHolder
         MarkItemAsApplied(Item.LivingRoomSector);
 
         PlayerPrefs.SetInt(initializationDoneName, 1);
+    }
+
+    public static void SaveDistanceRecord(float newDistance)
+    {
+        if (!PlayerPrefs.HasKey(distanceRecordName))
+        {
+            PlayerPrefs.SetFloat(distanceRecordName, newDistance);
+            return;
+        }
+
+        float prevRecord = PlayerPrefs.GetFloat(distanceRecordName);
+
+        if (prevRecord < newDistance)
+        {
+            PlayerPrefs.SetFloat(distanceRecordName, newDistance);
+        }
     }
 
     //Add coins amount to storage

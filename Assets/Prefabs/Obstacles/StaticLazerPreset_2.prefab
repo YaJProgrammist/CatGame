@@ -10,12 +10,12 @@ PrefabInstance:
     - target: {fileID: 5475681810014281122, guid: 543aeaae7ff529846a92e7db9976401f,
         type: 3}
       propertyPath: m_Name
-      value: StaticLazerPreset_0
+      value: StaticLazerPreset_2
       objectReference: {fileID: 0}
     - target: {fileID: 5475681810014281123, guid: 543aeaae7ff529846a92e7db9976401f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.053
+      value: 0.553
       objectReference: {fileID: 0}
     - target: {fileID: 5475681810014281123, guid: 543aeaae7ff529846a92e7db9976401f,
         type: 3}
