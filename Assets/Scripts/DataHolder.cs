@@ -38,7 +38,7 @@ static class DataHolder
         PlayerPrefs.SetInt(coinsNumberName, coinsNumber);
     }
 
-    public static void SaveItemAsBought(Item item)
+    public static void PutItemIntoStorage(Item item)
     {
         string keyName = GetBoughtKeyForItem(item);
 
@@ -165,7 +165,7 @@ static class DataHolder
     private static void PutAppliedSkinIntoStorage()
     {
         Item currentPlayerSkin = GetCurrentPLayerSkin();
-        SaveItemAsBought(currentPlayerSkin);
+        PutItemIntoStorage(currentPlayerSkin);
         SaveItemAsUnapplied(currentPlayerSkin);
     }
 }

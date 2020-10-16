@@ -43,7 +43,7 @@ public class StoreItem
             return false;
         }
 
-        DataHolder.SaveItemAsBought(GetItemId());
+        DataHolder.PutItemIntoStorage(GetItemId());
 
         return true;
     }

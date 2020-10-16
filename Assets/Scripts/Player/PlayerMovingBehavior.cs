@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using UnityEngine;
+﻿using UnityEngine;
 
+/*
+ * Determines the way player moves.
+ */
 public abstract class PlayerMovingBehavior
 {
+    //Rigidbody of player
     protected Rigidbody2D currentRigidbody;
 
     public PlayerMovingBehavior(Rigidbody2D rigidbody)
@@ -13,5 +13,6 @@ public abstract class PlayerMovingBehavior
         currentRigidbody = rigidbody;
     }
 
-    public abstract void Move();
+    //Called in behavior controller's Update (once per frame)
+    public abstract void Update();
 }

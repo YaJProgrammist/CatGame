@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
     [SerializeField]
@@ -107,9 +108,6 @@ public class Player : MonoBehaviour
         if (obstacle != null)
         {
             obstacle.HandleCollision();
-
-            // TODO or it is better to change health controller from here?
-
             return true;
         }
 

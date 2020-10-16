@@ -10,7 +10,7 @@ class Standing : PlayerMovingBehavior
         rigidbody.velocity = velocityVector;
     }
 
-    public override sealed void Move()
+    public override sealed void Update()
     {
     }
 }

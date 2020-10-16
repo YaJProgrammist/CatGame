@@ -17,11 +17,15 @@ public class Rocket : Obstacle
     private CautionSign currentCautionSign;
     private float timePassedInSec;
     private bool fireIsDone;
+    private float sectorHeight;
 
     public RocketBehavior MovingBehavior { get; set; }
 
     void Start()
     {
+        GameManager gameManager = GameManager.GetInstance();
+        sectorHeight = gameManager.GetPlaySpaceHeight();
+
         currentCautionSign = Instantiate(cautionSignPrefab, cautionSignsHolder.transform);
         currentCautionSign.Show();
         timePassedInSec = 0;
@@ -39,7 +43,7 @@ public class Rocket : Obstacle
     {
         Vector2 currentCautionSignPosition = currentCautionSign.transform.position;
 
-        currentCautionSignPosition.y = cautionSignsHolder.transform.position.y + this.transform.position.y / 2.211402f * Screen.height; // TODO
+        currentCautionSignPosition.y = cautionSignsHolder.transform.position.y + this.transform.position.y / sectorHeight * Screen.height;
         currentCautionSign.gameObject.transform.position = currentCautionSignPosition;
 
         if (fireIsDone)

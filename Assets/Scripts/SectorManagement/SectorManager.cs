@@ -74,6 +74,11 @@ public class SectorManager : MonoBehaviour
         RefreshAllowedFactories();
     }
 
+    public float GetSectorHeight()
+    {
+        return menuSector.transform.localScale.y;
+    }
+
     private void ClearAll()
     {
         foreach (Sector sector in sectorQueue)

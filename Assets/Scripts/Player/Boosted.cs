@@ -1,13 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-class Boosted : PlayerMovingBehavior // TODO Check if there is a collider after boost ended
+/*
+ * Behavior that pushes player to go faster and without collisions 
+ * in the beginning of the game.
+ */
+class Boosted : PlayerMovingBehavior 
 {
+    //Called when boost is finished
     public UnityEvent BoostDone = new UnityEvent();
 
-    private Vector2 velocityVector;
-    private float boostDistance;
-    private float startX;
+    private Vector2 velocityVector; //boost velocity
+    private float boostDistance; //distance which player passes when boosted
+    private float startX; //position of player before the boost
 
     public Boosted(Rigidbody2D rigidbody) : base (rigidbody)
     {
@@ -17,8 +22,10 @@ class Boosted : PlayerMovingBehavior // TODO Check if there is a collider after 
         startX = rigidbody.transform.position.x;
     }
 
-    public override sealed void Move()
+    //Called in behavior controller's Update (once per frame)
+    public override sealed void Update()
     {
+        //Checks if boost should be stopped (if player has passed needed distance)
         if (currentRigidbody.transform.position.x - startX >= boostDistance)
         {
             BoostDone?.Invoke();

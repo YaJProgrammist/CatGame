@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
     private Canvas gameOverCanvas;
 
     [SerializeField]
+    private Canvas pauseGameCanvas;
+
+    [SerializeField]
     private Store store;
 
     [SerializeField]
@@ -79,6 +82,25 @@ public class GameManager : MonoBehaviour
         player.StartMoving();
     }
 
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        pauseGameCanvas.gameObject.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        pauseGameCanvas.gameObject.SetActive(false);
+    }
+
+    public void GoToMainMenuAfterPause()
+    {
+        ResumeGame();
+        GameOver();
+        GoToMainMenu();
+    }
+
     public void GoToMainMenu()
     {
         playmodeCanvas.gameObject.SetActive(false);
@@ -109,6 +131,11 @@ public class GameManager : MonoBehaviour
         DataHolder.SetInitialSettings();
         RefreshMainMenuData();
         player.Refresh();
+    }
+
+    public float GetPlaySpaceHeight()
+    {
+        return sectorManager.GetSectorHeight();
     }
 
     private void RefreshMainMenuData()

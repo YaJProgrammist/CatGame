@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 
+/*
+ * Behavior that pushes player forward.
+ * Activated when player touches the floor.
+ */
 class Running : PlayerMovingBehavior
 {
-    private Vector2 velocityVector;
+    private Vector2 velocityVector; //velocity of player during this behavior (horizontal)
 
     public Running(Rigidbody2D rigidbody) : base (rigidbody)
     {
@@ -10,7 +14,9 @@ class Running : PlayerMovingBehavior
         currentRigidbody.velocity = velocityVector;
     }
 
-    public override sealed void Move()
+    //Called in behavior controller's Update (once per frame)
+    public override sealed void Update()
     {
+        //No changes per frame
     }
 }
