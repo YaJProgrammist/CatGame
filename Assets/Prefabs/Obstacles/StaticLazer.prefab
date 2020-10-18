@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 255662353714136219}
   m_Layer: 0
   m_Name: StaticLazer
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e00fd3bd3c2ebf46afb008d0ab91b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zRotatingVelocity: 0
 --- !u!61 &255662353714136219
 BoxCollider2D:
   m_ObjectHideFlags: 0

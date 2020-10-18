@@ -45,9 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd0ddc200130b642b9567c3c78370ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EndTriggered:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &2297771393920629875
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +362,7 @@ GameObject:
   - component: {fileID: 988099044585142637}
   m_Layer: 0
   m_Name: SectorEndTrigger
-  m_TagString: Untagged
+  m_TagString: EndTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -422,4 +419,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0652b0f69711e46b0b1f05642f231f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSector: {fileID: 7967850543580709655}

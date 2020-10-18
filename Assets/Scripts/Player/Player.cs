@@ -20,15 +20,23 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        GameManager.GetInstance().OnGameStarted += StartMoving;
+        GameManager.GetInstance().OnGameReset += Reset;
+        GameManager.GetInstance().OnGameOver += StopMoving;
+        GameManager.GetInstance().OnStoreClosed += Refresh;
+        GameManager.GetInstance().OnResetProgress += Refresh;
+
         startPlayerPosition = this.transform.position;
+    }
+
+    void Update()
+    {
+        GameManager.GetInstance().CoveredDistance = this.transform.position.x - startPlayerPosition.x;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (TryHandleColliderAsFloor(collision.collider))
-        {
-            return;
-        }
+        TryHandleColliderAsFloor(collision.collider);
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -36,17 +44,24 @@ public class Player : MonoBehaviour
         //Ignore triggers when boost mode is on
         if (movingBehaviorController.IsBoosted)
         {
+            TryHandleColliderAsEndTrigger(collider);
             return;
         }
 
-        if (TryHandleColliderAsBonus(collider))
+        switch (collider.tag)
         {
-            return;
-        }
-
-        if (TryHandleColliderAsObstacle(collider))
-        {
-            return;
+            case "Bonus":
+                TryHandleColliderAsBonus(collider);
+                break;
+            case "Obstacle":
+                TryHandleColliderAsObstacle(collider);
+                break;
+            case "EndTrigger":
+                TryHandleColliderAsEndTrigger(collider);
+                break;
+            default:
+                //Nothing should be done
+                break;
         }
     }
 
@@ -119,6 +134,20 @@ public class Player : MonoBehaviour
         if (obstacle != null)
         {
             obstacle.HandleCollision();
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool TryHandleColliderAsEndTrigger(Collider2D collider)
+    {
+        SectorEndTrigger endTrigger = collider.gameObject.GetComponent<SectorEndTrigger>();
+
+        //If collision happened with obstacle
+        if (endTrigger != null)
+        {
+            SectorManager.GetInstance().MoveOn();
             return true;
         }
 

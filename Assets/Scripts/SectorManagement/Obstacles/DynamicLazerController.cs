@@ -26,7 +26,7 @@ public class DynamicLazerController : MonoBehaviour
 
     void Start()
     {
-        lazer.DynamicLazerControllerAffected.AddListener((action) => action(this));
+        lazer.OnDynamicLazerControllerAffected += (action) => action(this);
 
         behavior = new DynamicLazerCycledBehaviorUsual(cycles, lazer);
         behavior.Activate();

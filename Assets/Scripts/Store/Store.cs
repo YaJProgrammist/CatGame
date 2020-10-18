@@ -2,6 +2,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Responsible for displaying buyable/applyable items.
+ * Singleton.
+ */
 public class Store : MonoBehaviour
 {
     [SerializeField]
@@ -12,9 +16,6 @@ public class Store : MonoBehaviour
 
     [SerializeField]
     private List<StoreItem> itemList;
-
-    [SerializeField]
-    private Canvas storeCanvas;
 
     [SerializeField]
     private Image storeBackground;
@@ -30,19 +31,21 @@ public class Store : MonoBehaviour
 
     void Start()
     {
+        GameManager.GetInstance().OnStoreOpened += Open;
+        GameManager.GetInstance().OnStoreClosed += Close;
+        GameManager.GetInstance().OnStoreClosed += Close;
+
         SetStoreMode();
         DisplayAllItems();
     }
 
     public void Open()
     {
-        storeCanvas.gameObject.SetActive(true);
         RefreshData();
     }
 
     public void Close()
     {
-        storeCanvas.gameObject.SetActive(false);
     }
 
     public void RefreshData()
@@ -98,8 +101,8 @@ public class Store : MonoBehaviour
         Vector2 currentStoreItemLocalScale = currentStoreItem.transform.localScale;
         currentStoreItemLocalScale.y /= scaleFactor;
         currentStoreItem.transform.localScale = currentStoreItemLocalScale;
-        currentStoreItem.ItemBought.AddListener((boughtItem) => RefreshData());
-        currentStoreItem.ItemApplied.AddListener((appliedItem) => RefreshAllItems());
+        currentStoreItem.OnItemBought += (boughtItem) => RefreshData();
+        currentStoreItem.OnItemApplied += (appliedItem) => RefreshAllItems();
 
         currentStoreItem.SetStoreItem(item);
         vizualizedItemsList.Add(currentStoreItem);
@@ -112,4 +115,28 @@ public class Store : MonoBehaviour
             item.Refresh();
         }
     }
+
+    //Singleton logic:
+    //v ****************************************** v
+
+    private static Store instance;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
+    public static Store GetInstance()
+    {
+        return instance;
+    }
+    //^ ****************************************** ^
 }

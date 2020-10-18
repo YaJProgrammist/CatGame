@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public abstract class Sector : MonoBehaviour
 {
     //Called when player almost reached right wall of sector
-    public UnityEvent EndTriggered = new UnityEvent();
+    public UnityAction OnEndTriggered;
 
     //Factory used for generating current sector elements
     public SectorComponentsSkinFactory ComponentsSkinFactory { get; set; }

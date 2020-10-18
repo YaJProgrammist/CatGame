@@ -87,10 +87,11 @@ public class MovingBehaviorController : MonoBehaviour
         movingBehavior = new Boosted(playerRigidbody);
 
         //When boost is finished - start running
-        ((Boosted)movingBehavior).BoostDone.AddListener(() =>
-        {
-            SwitchToRun();
-            IsBoosted = false;
-        });
+        ((Boosted)movingBehavior).OnBoostDone +=
+            () =>
+            {
+                SwitchToRun();
+                IsBoosted = false;
+            };
     }
 }

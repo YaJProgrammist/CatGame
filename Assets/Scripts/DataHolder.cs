@@ -26,7 +26,7 @@ static class DataHolder
 
         PlayerPrefs.SetFloat(distanceRecordName, 0);
 
-        PlayerPrefs.SetInt(coinsNumberName, 100);
+        PlayerPrefs.SetInt(coinsNumberName, 3000);
 
         MarkItemAsApplied(Item.CatSkin);
 
@@ -50,6 +50,17 @@ static class DataHolder
         {
             PlayerPrefs.SetFloat(distanceRecordName, newDistance);
         }
+    }
+
+    public static float GetDistanceRecord()
+    {
+        if (!PlayerPrefs.HasKey(distanceRecordName))
+        {
+            PlayerPrefs.SetFloat(distanceRecordName, 0);
+            return 0;
+        }
+
+        return PlayerPrefs.GetFloat(distanceRecordName);
     }
 
     //Add coins amount to storage

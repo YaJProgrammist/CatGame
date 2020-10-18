@@ -1,16 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
-
-//Called when obstacles behavior has to be affected (takes action to perform on obstacles)
-public class ObstaclesAffectedUnityEvent : UnityEvent<UnityAction<Obstacle>>
-{
-}
-
-//Called when player health has to be affected (takes action to perform on health controller)
-public class PlayerHealthAffectedUnityEvent : UnityEvent<UnityAction<HealthController>>
-{
-}
 
 /* 
  * Main manager.
@@ -19,49 +8,43 @@ public class PlayerHealthAffectedUnityEvent : UnityEvent<UnityAction<HealthContr
 public class GameManager : MonoBehaviour 
 {
     //Called when obstacles behavior has to be affected
-    public ObstaclesAffectedUnityEvent ObstaclesAffected = new ObstaclesAffectedUnityEvent();
+    public OnObstaclesAffectedUnityEvent OnObstaclesAffected = new OnObstaclesAffectedUnityEvent();
 
     //Called when player health has to be affected
-    public PlayerHealthAffectedUnityEvent PlayerHealthAffected = new PlayerHealthAffectedUnityEvent();
+    public UnityAction<UnityAction<HealthController>> OnPlayerHealthAffected;
 
-    [SerializeField]
-    private Player player;
+    //Called when game has to be started
+    public UnityAction OnGameStarted;
 
-    [SerializeField]
-    private SectorManager sectorManager;
+    //Called when game has to be paused
+    public UnityAction OnGamePaused;
 
-    [SerializeField]
-    private Canvas mainMenuCanvas;
+    //Called when game has to be resumed
+    public UnityAction OnGameResumed;
 
-    [SerializeField]
-    private Canvas playmodeCanvas; //canvas that is shown during the game
+    //Called when game has to be reset
+    public UnityAction OnGameReset;
 
-    [SerializeField]
-    private Canvas gameOverCanvas;
+    //Called when game has to be over
+    public UnityAction OnGameOver;
 
-    [SerializeField]
-    private Canvas pauseGameCanvas;
+    //Called when store has to be opened
+    public UnityAction OnStoreOpened;
 
-    [SerializeField]
-    private Store store;
+    //Called when store has to be closed
+    public UnityAction OnStoreClosed;
 
-    /* UI text on main menu canvas that displays 
-     total count of coins */
-    [SerializeField]
-    private Text currentCoinsNumberText;
+    //Called when progress has to be reset
+    public UnityAction OnResetProgress;
 
-    /* UI text nn playmode canvas that displays 
-     count of coins that have been picked up during current game */
-    [SerializeField]
-    private Text pickedUpCoinsNumberText;
+    //Called when picked up coins count was changed
+    public UnityAction OnPickedUpCoinsCountChanged;
 
-    /* UI text nn game over canvas that displays 
-     count of coins that have been picked up during current game */
-    [SerializeField]
-    private Text finalCoinsNumberText; 
+    //Called when covered distance was changed
+    public UnityAction OnCoveredDistanceChanged;
 
     private int _pickedUpCoinsNumber;
-    private int _distanceCovered;
+    private float _coveredDistance;
 
     //Count of coins that have been picked up during current game
     public int PickedUpCoinsNumber
@@ -71,129 +54,84 @@ public class GameManager : MonoBehaviour
         set
         {
             _pickedUpCoinsNumber = value;
-            pickedUpCoinsNumberText.text = value.ToString();
+            OnPickedUpCoinsCountChanged?.Invoke();
         }
     }
 
-    /*public float DistanceCovered
+    public float CoveredDistance
     {
-        get { return _distanceCovered; }
+        get { return _coveredDistance; }
 
         set
         {
-            _distanceCovered = value;
-            distanceCoveredText.text = value.ToString();
+            _coveredDistance = value;
+            OnCoveredDistanceChanged?.Invoke();
         }
-    }*/
+    }
 
     void Start()
     {
-        HealthController playerHealthController = player.GetComponent<HealthController>();
-        playerHealthController.NoLivesLeft.AddListener(GameOver);
-        RefreshMainMenuData();
-
         PickedUpCoinsNumber = 0;
+        CoveredDistance = 0;
     }
 
     //Play again from game over menu
     public void PlayAgain()
     {
-        gameOverCanvas.gameObject.SetActive(false);
         ResetGame();
         StartGame();
     }
 
     public void StartGame()
     {
-        mainMenuCanvas.gameObject.SetActive(false);
-        playmodeCanvas.gameObject.SetActive(true);
-        sectorManager.MoveOn();
-        player.StartMoving();
+        OnGameStarted?.Invoke();
+    }
+
+    public void GameOver()
+    {
+        DataHolder.SaveEarnedCoins(PickedUpCoinsNumber);
+        DataHolder.SaveDistanceRecord(CoveredDistance);
+
+        OnGameOver?.Invoke();
     }
 
     public void PauseGame()
     {
+        OnGamePaused?.Invoke();
         Time.timeScale = 0;
-        pauseGameCanvas.gameObject.SetActive(true);
     }
 
     //Continue game after pause
     public void ResumeGame()
     {
+        OnGameResumed?.Invoke();
         Time.timeScale = 1;
-        pauseGameCanvas.gameObject.SetActive(false);
-    }
-
-    //Go to main menu from game paused menu
-    public void GoToMainMenuAfterPause()
-    {
-        ResumeGame();
-        GameOver();
-        GoToMainMenu();
-    }
-
-    //Go to main menu when game is over or is not on
-    public void GoToMainMenu()
-    {
-        playmodeCanvas.gameObject.SetActive(false);
-        gameOverCanvas.gameObject.SetActive(false);
-        mainMenuCanvas.gameObject.SetActive(true);
-
-        RefreshMainMenuData();
-        ResetGame();
     }
 
     public void OpenStore()
     {
-        mainMenuCanvas.gameObject.SetActive(false);
-        store.Open();
+        OnStoreOpened?.Invoke();
     }
 
     public void CloseStore()
     {
-        player.Refresh();
-        sectorManager.Refresh();
-        RefreshMainMenuData();
-        store.Close();
-        mainMenuCanvas.gameObject.SetActive(true);
+        OnStoreClosed?.Invoke();
     }
 
     //Reset everything to initial state
     public void ResetProgress()
     {
         DataHolder.SetInitialSettings();
-        RefreshMainMenuData();
-        player.Refresh();
-    }
-
-    //Get height of sectors
-    public float GetPlaySpaceHeight()
-    {
-        return sectorManager.GetPlaySpaceHeight();
-    }
-
-    //Refresh data displayed in main menu
-    private void RefreshMainMenuData()
-    {
-        currentCoinsNumberText.text = DataHolder.GetCurrentCoinsNumber().ToString();
+        OnResetProgress?.Invoke();
     }
 
     //Reset properties to state of game start (called after end of game)
-    private void ResetGame()
+    public void ResetGame()
     {
         PickedUpCoinsNumber = 0;
-        player.Reset();
-        sectorManager.Reset();
-    }
+        CoveredDistance = 0;
 
-    private void GameOver()
-    {
-        finalCoinsNumberText.text = PickedUpCoinsNumber.ToString();
-        DataHolder.SaveEarnedCoins(PickedUpCoinsNumber);
-
-        player.StopMoving();
-        playmodeCanvas.gameObject.SetActive(false);
-        gameOverCanvas.gameObject.SetActive(true);
+        OnGameReset?.Invoke();
     }
 
     //Singleton logic:

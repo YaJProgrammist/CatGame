@@ -6,7 +6,7 @@ public class StaticLazerWeakener : Bonus
     protected override sealed void MakeImpact()
     {
         GameManager gameManager = GameManager.GetInstance();
-        gameManager.ObstaclesAffected.Invoke(ShutLazerDown);
+        gameManager.OnObstaclesAffected?.Invoke(ShutLazerDown);
     }
 
     public void ShutLazerDown(Obstacle obstacle)

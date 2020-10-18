@@ -6,7 +6,7 @@ public class RocketWeakener : Bonus
     protected override sealed void MakeImpact()
     {
         GameManager gameManager = GameManager.GetInstance();
-        gameManager.ObstaclesAffected.Invoke(SlowRocketDown);
+        gameManager.OnObstaclesAffected?.Invoke(SlowRocketDown);
     }
 
 

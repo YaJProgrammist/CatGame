@@ -26,8 +26,7 @@ public class Rocket : Obstacle
 
     void Start()
     {
-        GameManager gameManager = GameManager.GetInstance();
-        sectorHeight = gameManager.GetPlaySpaceHeight();
+        sectorHeight = SectorManager.GetInstance().GetPlaySpaceHeight();
 
         currentCautionSign = Instantiate(cautionSignPrefab, cautionSignsHolder.transform);
         currentCautionSign.Show();
@@ -83,6 +82,6 @@ public class Rocket : Obstacle
     protected override sealed void MakeImpact()
     {
         GameManager gameManager = GameManager.GetInstance();
-        gameManager.PlayerHealthAffected.Invoke((healthController) => healthController.DecreaseLivesCount());
+        gameManager.OnPlayerHealthAffected?.Invoke((healthController) => healthController.DecreaseLivesCount());
     }
 }

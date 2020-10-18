@@ -8,7 +8,7 @@ using UnityEngine.Events;
 class Boosted : PlayerMovingBehavior 
 {
     //Called when boost is finished
-    public UnityEvent BoostDone = new UnityEvent();
+    public UnityAction OnBoostDone;
 
     private Vector2 velocityVector; //boost velocity
     private float boostDistance; //distance which player passes when boosted
@@ -28,7 +28,7 @@ class Boosted : PlayerMovingBehavior
         //Checks if boost should be stopped (if player has passed needed distance)
         if (currentRigidbody.transform.position.x - startX >= boostDistance)
         {
-            BoostDone?.Invoke();
+            OnBoostDone?.Invoke();
         }
     }
 }

@@ -2,19 +2,11 @@
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class ItemAppliedUnityEvent : UnityEvent<Item>
-{
-}
-
-public class ItemBoughtUnityEvent : UnityEvent<Item>
-{
-}
-
 public class StoreItemVisualizer : MonoBehaviour 
 {
 
-    public ItemAppliedUnityEvent ItemApplied = new ItemAppliedUnityEvent();
-    public ItemBoughtUnityEvent ItemBought = new ItemBoughtUnityEvent();
+    public UnityAction<Item> OnItemApplied;
+    public UnityAction<Item> OnItemBought;
 
     [SerializeField]
     private Image itemTargetImage;
@@ -95,7 +87,7 @@ public class StoreItemVisualizer : MonoBehaviour
 
         SwitchToApply();
 
-        ItemBought?.Invoke(storeItem.GetItemId());
+        OnItemBought?.Invoke(storeItem.GetItemId());
     }
 
     private void ApplyButtonOnClick()
@@ -107,7 +99,7 @@ public class StoreItemVisualizer : MonoBehaviour
 
         applyButton.interactable = false;
 
-        ItemApplied?.Invoke(storeItem.GetItemId());
+        OnItemApplied?.Invoke(storeItem.GetItemId());
     }
 
     private bool ItemIsAffordable(StoreItem storeItem)

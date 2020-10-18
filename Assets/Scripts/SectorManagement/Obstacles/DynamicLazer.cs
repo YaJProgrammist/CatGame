@@ -1,15 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-//Called when controller of current lazer has to be affected by certain action
-public class DynamicLazerControllerAffectedUnityEvent : UnityEvent<UnityAction<DynamicLazerController>>
-{
-}
-
 public class DynamicLazer : Obstacle
 {
     //Called when controller of current lazer has to be affected
-    public DynamicLazerControllerAffectedUnityEvent DynamicLazerControllerAffected = new DynamicLazerControllerAffectedUnityEvent();
+    public UnityAction<UnityAction<DynamicLazerController>> OnDynamicLazerControllerAffected;
 
     [SerializeField]
     private SpriteRenderer lazerSpriteRenderer;
@@ -41,6 +36,6 @@ public class DynamicLazer : Obstacle
     protected override sealed void MakeImpact()
     {
         GameManager gameManager = GameManager.GetInstance();
-        gameManager.PlayerHealthAffected.Invoke((healthController) => healthController.DecreaseLivesCount());
+        gameManager.OnPlayerHealthAffected?.Invoke((healthController) => healthController.DecreaseLivesCount());
     }
 }

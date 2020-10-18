@@ -4,14 +4,6 @@ using static DynamicLazerController;
 
 public abstract class DynamicLazerCycledBehavior : DynamicLazerBehavior
 {
-    protected enum DynamicLazerState
-    {
-        Waiting,
-        Caution,
-        Danger,
-        TurnedOff
-    }
-
     private DynamicLazer lazer;
     private DynamicLazerState currentState;
     private float passedTimeOfCurrentState;

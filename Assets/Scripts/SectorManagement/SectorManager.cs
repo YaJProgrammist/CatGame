@@ -3,6 +3,7 @@ using UnityEngine;
 
 /*
  * Responsible for sectors generation and removal.
+ * Singleton.
  */
 public class SectorManager : MonoBehaviour 
 {
@@ -28,6 +29,10 @@ public class SectorManager : MonoBehaviour
 
     void Start()
     {
+        GameManager.GetInstance().OnGameReset += Reset;
+        GameManager.GetInstance().OnGameStarted += MoveOn;
+        GameManager.GetInstance().OnStoreClosed += Refresh;
+
         sectorQueue = new Queue<Sector>();
         sectorQueue.Enqueue(menuSector);
 
@@ -54,9 +59,6 @@ public class SectorManager : MonoBehaviour
         Sector newSector = factory.InstantiateNewSector();
 
         newSector.transform.position = nextSectorPosition;
-
-        //Listen if trigger of sector pre-end is triggered - then generate next piece of game space
-        newSector.EndTriggered.AddListener(MoveOn);
 
         bonusManager.AttachBonusPresetToSector(newSector);
         obstacleManager.AttachRandomObstaclePresetsToSector(newSector);        
@@ -127,4 +129,28 @@ public class SectorManager : MonoBehaviour
         menuSector.Activate();
         sectorQueue.Enqueue(menuSector);
     }
+
+    //Singleton logic:
+    //v ****************************************** v
+
+    private static SectorManager instance;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
+    public static SectorManager GetInstance()
+    {
+        return instance;
+    }
+    //^ ****************************************** ^
 }

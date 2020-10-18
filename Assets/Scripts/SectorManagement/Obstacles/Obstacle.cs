@@ -10,7 +10,7 @@ public abstract class Obstacle : MonoBehaviour
         GameManager gameManager = GameManager.GetInstance();
 
         //Listen if obstacles have to be affected by a certain action.
-        gameManager.ObstaclesAffected.AddListener((action) => action(this)); 
+        gameManager.OnObstaclesAffected.AddListener((action) => action(this)); 
     }
 
     //Called when player has triggered this
