@@ -8,6 +8,21 @@ using UnityEngine.UI;
  */
 public class UIManager : MonoBehaviour
 {
+    [SerializeField]
+    private RectTransform mainMenuPanel;
+
+    [SerializeField]
+    private RectTransform playmodePanel;
+
+    [SerializeField]
+    private RectTransform pauseGamePanel;
+
+    [SerializeField]
+    private RectTransform gameOverPanel;
+
+    [SerializeField]
+    private RectTransform storePanel;
+
     //Called when picked up coins count texts has to be updated
     public UnityAction OnPickedUpCoinsCountUpdate;
 
@@ -26,33 +41,6 @@ public class UIManager : MonoBehaviour
     //Called when covered distance record texts has to be updated
     public UnityAction OnCoveredDistanceRecordUpdate;
 
-    //Called when game has to be started after it was over
-    public UnityAction OnPlayAgain;
-    
-    //Called when game has to be started
-    public UnityAction OnGameStarted;
-
-    //Called when game has to be paused
-    public UnityAction OnGamePaused;
-
-    //Called when game has to be resumed
-    public UnityAction OnGameResumed;
-
-    //Called when main menu has to be showed after game over
-    public UnityAction OnGoToMainMenuAfterGameOver;
-
-    //Called when main menu has to be showed after game paused
-    public UnityAction OnGoToMainMenuAfterGamePaused;
-
-    //Called when game has to be over
-    public UnityAction OnGameOver;
-
-    //Called when store has to be opened
-    public UnityAction OnStoreOpened;
-
-    //Called when store has to be closed
-    public UnityAction OnStoreClosed;
-
     void Start()
     {
         GameManager.GetInstance().OnGameOver += GameOver;
@@ -65,13 +53,18 @@ public class UIManager : MonoBehaviour
     //Play again from game over menu
     public void PlayAgain()
     {
-        OnPlayAgain?.Invoke();
+        mainMenuPanel.gameObject.SetActive(false);
+        gameOverPanel.gameObject.SetActive(false);
+        playmodePanel.gameObject.SetActive(true);
+
         GameManager.GetInstance().PlayAgain();
     }
 
     public void StartGame()
     {
-        OnGameStarted?.Invoke();
+        mainMenuPanel.gameObject.SetActive(false);
+        playmodePanel.gameObject.SetActive(true);
+
         GameManager.GetInstance().StartGame();
     }
 
@@ -79,26 +72,33 @@ public class UIManager : MonoBehaviour
     {
         OnFinalCoinsCountUpdate?.Invoke();
         OnFinalCoveredDistanceUpdate?.Invoke();
-        OnGameOver?.Invoke();
+
+        gameOverPanel.gameObject.SetActive(true);
+        playmodePanel.gameObject.SetActive(false);
     }
 
     public void PauseGame()
     {
-        OnGamePaused?.Invoke();
+        pauseGamePanel.gameObject.SetActive(true);
+
         GameManager.GetInstance().PauseGame();
     }
 
     //Continue game after pause
     public void ResumeGame()
     {
-        OnGameResumed?.Invoke();
+        pauseGamePanel.gameObject.SetActive(false);
+
         GameManager.GetInstance().ResumeGame();
     }
 
     //Go to main menu when game is over or is not on
     public void GoToMainMenuAfterGameOver()
     {
-        OnGoToMainMenuAfterGameOver?.Invoke();
+        mainMenuPanel.gameObject.SetActive(true);
+        gameOverPanel.gameObject.SetActive(false);
+        playmodePanel.gameObject.SetActive(false);
+
         RefreshMainMenuData();
 
         GameManager.GetInstance().ResetGame();
@@ -107,35 +107,42 @@ public class UIManager : MonoBehaviour
     //Go to main menu from game paused menu
     public void GoToMainMenuAfterPause()
     {
-        OnGoToMainMenuAfterGamePaused?.Invoke();
+        pauseGamePanel.gameObject.SetActive(false);
 
         GameManager.GetInstance().ResumeGame();
         GameManager.GetInstance().GameOver();
 
-        RefreshMainMenuData();
-
-        GameManager.GetInstance().ResetGame();
+        GoToMainMenuAfterGameOver();
     }
 
     public void OpenStore()
     {
-        OnStoreOpened?.Invoke();
+        mainMenuPanel.gameObject.SetActive(false);
+        storePanel.gameObject.SetActive(true);
+
         GameManager.GetInstance().OpenStore();
     }
 
     public void CloseStore()
     {
-        OnStoreClosed?.Invoke();
+        mainMenuPanel.gameObject.SetActive(true);
+        storePanel.gameObject.SetActive(false);
+
         RefreshMainMenuData();
 
         GameManager.GetInstance().CloseStore();
     }
-    
+
     //Reset everything to initial state
     public void ResetProgress()
     {
         GameManager.GetInstance().ResetProgress();
         RefreshMainMenuData();
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 
     private void UpdatePickedUpCoinsCount()

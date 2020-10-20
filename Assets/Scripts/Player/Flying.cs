@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
+using static UnityEngine.InputSystem.InputAction;
+using static UnityEngine.InputSystem.PlayerInput;
 
 /*
  * Behavior that pushes player forward-up when button is pressed
@@ -8,28 +11,52 @@
 class Flying : PlayerMovingBehavior
 {
     private Vector2 velocityVector; //vector that determines horizontal velocity during this behavior
-    private float airJumpYStep; //determines vertical velocity during this behavior (upwards of downwards respectively)
+    private float airJumpYUpStep; //determines vertical speed upwards during this behavior
+    private float airJumpYDownStep; //determines vertical speed downwards during this behavior
+    private PlayerInput playerInput;
+    private bool pushedUp;
 
     public Flying(Rigidbody2D rigidbody) : base (rigidbody)
     {
-        velocityVector = new Vector2(1.5f, 0);
-        airJumpYStep = 1f;
+        playerInput = InputManager.GetInstance().GetPlayerInput();
+
+        playerInput.currentActionMap["PushUp"].performed += OnPushUp;
+        playerInput.currentActionMap["PushDown"].performed += OnPushDown;
+
+        PlayerFlyingSettings settings = SettingsManager.GetInstance().GetPlayerSettings().GetMovingSettings().GetFlyingSettings();
+
+        float horizontalSpeed = settings.GetFlyingHorizontalSpeed();
+        velocityVector = new Vector2(horizontalSpeed, 0);
+
+        airJumpYUpStep = settings.GetFlyingUpSpeed();
+        airJumpYDownStep = settings.GetFlyingDownSpeed();
 
         rigidbody.velocity = velocityVector;
+        pushedUp = false;
     }
 
     //Called in behavior controller's Update (once per frame)
     public override sealed void Update()
     {
-        if (Input.GetButton("Jump"))
+        if (pushedUp)
         {
             //Push player up
-            currentRigidbody.velocity = new Vector2(velocityVector.x, airJumpYStep);
+            currentRigidbody.velocity = new Vector2(velocityVector.x, airJumpYUpStep);
         }
         else
         {
             //Push player down
-            currentRigidbody.velocity = new Vector2(velocityVector.x, -airJumpYStep);
+            currentRigidbody.velocity = new Vector2(velocityVector.x, airJumpYDownStep);
         }
+    }
+
+    private void OnPushUp(CallbackContext callbackContext)
+    {
+        pushedUp = true;
+    }
+
+    private void OnPushDown(CallbackContext callbackContext)
+    {
+        pushedUp = false;
     }
 }

@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     {
         //Ignore triggers when boost mode is on
-        if (movingBehaviorController.IsBoosted)
+        if (movingBehaviorController.BehaviorMode == PlayerBehaviorMode.Boosted)
         {
             TryHandleColliderAsEndTrigger(collider);
             return;
@@ -133,6 +133,7 @@ public class Player : MonoBehaviour
         //If collision happened with obstacle
         if (obstacle != null)
         {
+            StopMoving();
             obstacle.HandleCollision();
             return true;
         }

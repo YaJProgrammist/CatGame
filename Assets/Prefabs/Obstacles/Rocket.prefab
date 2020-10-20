@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2930351885026353093}
   - component: {fileID: -8613752135511208362}
   - component: {fileID: 1897177570}
+  - component: {fileID: 129126689852337042}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Obstacle
@@ -159,3 +160,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
+--- !u!114 &129126689852337042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255662353714136224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d895e958ba2000f409f79bf305f7e093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

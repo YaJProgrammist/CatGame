@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 /*
@@ -32,7 +31,7 @@ public class BonusManager : MonoBehaviour
     }
 
     //Change default coins skins to skins that match the sector's design
-    private void ChangeCoinsSkin(BonusPreset bonusPreset, AnimatorController coinAnimatorController)
+    private void ChangeCoinsSkin(BonusPreset bonusPreset, RuntimeAnimatorController coinAnimatorController)
     {
         Coin[] coinsInPreset = bonusPreset.GetComponentsInChildren<Coin>();
 

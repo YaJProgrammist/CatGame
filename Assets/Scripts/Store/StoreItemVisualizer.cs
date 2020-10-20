@@ -23,9 +23,9 @@ public class StoreItemVisualizer : MonoBehaviour
     [SerializeField]
     private Button applyButton;
 
-    private StoreItem storeItem;
+    private StoreItemSettings storeItem;
 
-    public void SetStoreItem(StoreItem item)
+    public void SetStoreItem(StoreItemSettings item)
     {
         storeItem = item;
 
@@ -102,7 +102,7 @@ public class StoreItemVisualizer : MonoBehaviour
         OnItemApplied?.Invoke(storeItem.GetItemId());
     }
 
-    private bool ItemIsAffordable(StoreItem storeItem)
+    private bool ItemIsAffordable(StoreItemSettings storeItem)
     {
         int playerCoinsCount = DataHolder.GetCurrentCoinsNumber();
         

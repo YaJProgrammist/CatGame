@@ -1,5 +1,4 @@
-﻿using UnityEditor.Animations;
-using UnityEngine;
+﻿using UnityEngine;
 
 /*
  * Stores elements of sector components that form a single design.
@@ -10,7 +9,7 @@ public class SectorComponentsSkinFactory : MonoBehaviour
     private Sector sectorPrefab;
 
     [SerializeField]
-    private AnimatorController _coinAnimatorController;
+    private RuntimeAnimatorController _coinAnimatorController;
 
     [SerializeField]
     private Sprite _rubySprite;
@@ -18,7 +17,7 @@ public class SectorComponentsSkinFactory : MonoBehaviour
     [SerializeField]
     private Item sectorType;
 
-    public AnimatorController CoinAnimatorController
+    public RuntimeAnimatorController CoinAnimatorController
     {
         get
         {

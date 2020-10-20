@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 /*
@@ -13,7 +12,7 @@ public class SkinController : MonoBehaviour
     {
         public string skinTitle;
         public Sprite SkinSprite;
-        public AnimatorController SkinAnimatorController;
+        public RuntimeAnimatorController SkinAnimatorController;
     }
 
     [SerializeField]

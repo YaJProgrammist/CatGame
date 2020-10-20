@@ -11,6 +11,7 @@ public abstract class DynamicLazerCycledBehavior : DynamicLazerBehavior
     protected List<DynamicLazerCycle> cycles;
     protected int currentCycleNumber;
     protected Dictionary<DynamicLazerState, float> stateDurations;
+    protected DynamicLazerCycledBehaviorCoeffs timeCoeffs;
 
     public DynamicLazerCycledBehavior(List<DynamicLazerCycle> currentCycles, DynamicLazer currentLazer)
     {
@@ -81,7 +82,14 @@ public abstract class DynamicLazerCycledBehavior : DynamicLazerBehavior
         SetStateDurations();
     }
 
-    protected abstract void SetStateDurations();
+    private void SetStateDurations()
+    {
+        DynamicLazerCycle currentCycle = cycles[currentCycleNumber];
+
+        stateDurations[DynamicLazerState.Waiting] = currentCycle.WaitingTime * timeCoeffs.waitingTimeСoeff;
+        stateDurations[DynamicLazerState.Caution] = currentCycle.CautionTime * timeCoeffs.cautionTimeСoeff;
+        stateDurations[DynamicLazerState.Danger] = currentCycle.DangerTime * timeCoeffs.dangerTimeСoeff;
+    }
 
     private void StartWaiting()
     {

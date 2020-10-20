@@ -30,6 +30,7 @@ public class Rocket : Obstacle
 
         currentCautionSign = Instantiate(cautionSignPrefab, cautionSignsHolder.transform);
         currentCautionSign.Show();
+
         timePassedInSec = 0;
         fireIsDone = false;
         MovingBehavior = new RocketBehaviorUsual();
@@ -47,7 +48,7 @@ public class Rocket : Obstacle
         Vector2 currentCautionSignPosition = currentCautionSign.transform.position;
 
         //Calculate caution sign Y position on canvas so it is on the same horizontal line with rocket on camera        
-        currentCautionSignPosition.y = cautionSignsHolder.transform.position.y + this.transform.position.y / sectorHeight * Screen.height;
+        currentCautionSignPosition.y = cautionSignsHolder.transform.position.y + this.transform.position.y / sectorHeight * Screen.height - currentCautionSign.GetComponent<RectTransform>().rect.height / 2;
 
         currentCautionSign.gameObject.transform.position = currentCautionSignPosition;
 
@@ -70,18 +71,18 @@ public class Rocket : Obstacle
         MovingBehavior.Move(currentRigidbody);
     }
 
+    //Take player's life
+    protected override sealed void MakeImpact()
+    {
+        GameManager gameManager = GameManager.GetInstance();
+        gameManager.OnPlayerHealthAffected?.Invoke((healthController) => healthController.DecreaseLivesCount());
+    }
+
     //Start moving rocket
     private void Fire()
     {
         fireIsDone = true;
         currentCautionSign.PutIntoDangerMode();
         MovingBehavior.Move(currentRigidbody);
-    }
-
-    //Take player's life
-    protected override sealed void MakeImpact()
-    {
-        GameManager gameManager = GameManager.GetInstance();
-        gameManager.OnPlayerHealthAffected?.Invoke((healthController) => healthController.DecreaseLivesCount());
     }
 }

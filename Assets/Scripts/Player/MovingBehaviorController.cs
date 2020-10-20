@@ -12,8 +12,7 @@ public class MovingBehaviorController : MonoBehaviour
     private Rigidbody2D playerRigidbody;
     private PlayerMovingBehavior movingBehavior;
 
-    public bool IsMoving { get; private set; }
-    public bool IsBoosted { get; private set; } //if boosted behavior is applied
+    public PlayerBehaviorMode BehaviorMode { get; private set; }
 
     void Start()
     {
@@ -21,25 +20,29 @@ public class MovingBehaviorController : MonoBehaviour
 
         playerRigidbody = GetComponent<Rigidbody2D>();
         movingBehavior = new Standing(playerRigidbody);
-        IsMoving = false;
-        IsBoosted = false;
+        BehaviorMode = PlayerBehaviorMode.Standing;
+
+        InputManager.GetInstance().GetPlayerInput().currentActionMap["PushUp"].performed += _ => OnPushUp();
     }
 
     void Update()
     {
-        if (!IsMoving)
+        if (BehaviorMode == PlayerBehaviorMode.Standing)
         {
             return;
-        }
-
-        if (!IsBoosted && Input.GetButton("Jump"))
-        {
-            movingBehavior = new Flying(playerRigidbody);
         }
 
         movingBehavior.Update(); 
         
         MoveCamera();
+    }
+
+    public void OnPushUp()
+    {
+        if (BehaviorMode == PlayerBehaviorMode.Running)
+        {
+            SwitchToFly();
+        }
     }
 
     //Called once per frame to follow player
@@ -52,8 +55,6 @@ public class MovingBehaviorController : MonoBehaviour
 
     public void StartMoving()
     {
-        IsMoving = true;
-
         //If booster is applied then use it
         if (DataHolder.GetIfItemIsApplied(Item.Booster))
         {
@@ -67,23 +68,25 @@ public class MovingBehaviorController : MonoBehaviour
 
     public void StopMoving()
     {
-        IsMoving = false;
+        BehaviorMode = PlayerBehaviorMode.Standing;
         movingBehavior = new Standing(playerRigidbody);
     }
 
     public void SwitchToRun()
     {
+        BehaviorMode = PlayerBehaviorMode.Running;
         movingBehavior = new Running(playerRigidbody);
     }
 
     public void SwitchToFly()
     {
+        BehaviorMode = PlayerBehaviorMode.Flying;
         movingBehavior = new Flying(playerRigidbody);
     }
 
     public void SwitchToBoost()
     {
-        IsBoosted = true;
+        BehaviorMode = PlayerBehaviorMode.Boosted;
         movingBehavior = new Boosted(playerRigidbody);
 
         //When boost is finished - start running
@@ -91,7 +94,6 @@ public class MovingBehaviorController : MonoBehaviour
             () =>
             {
                 SwitchToRun();
-                IsBoosted = false;
             };
     }
 }

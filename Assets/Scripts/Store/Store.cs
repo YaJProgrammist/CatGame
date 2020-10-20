@@ -15,25 +15,22 @@ public class Store : MonoBehaviour
     private StoreItemVisualizer itemPanelPrefab;
 
     [SerializeField]
-    private List<StoreItem> itemList;
-
-    [SerializeField]
     private Image storeBackground;
 
     [SerializeField]
     private Text storeCoinsNumberText;
 
-    [SerializeField]
-    private List<StoreModeFactory> storeModeFactories;
-
     private float scaleFactor;
+    private List<StoreItemSettings> itemList;
+    private List<StoreDesignModeSettings> storeModes;
     private List<StoreItemVisualizer> vizualizedItemsList = new List<StoreItemVisualizer>();
 
     void Start()
     {
         GameManager.GetInstance().OnStoreOpened += Open;
-        GameManager.GetInstance().OnStoreClosed += Close;
-        GameManager.GetInstance().OnStoreClosed += Close;
+
+        itemList = SettingsManager.GetInstance().GetStoreSettings().GetItemList();
+        storeModes = SettingsManager.GetInstance().GetStoreSettings().GetStoreDesignModes();
 
         SetStoreMode();
         DisplayAllItems();
@@ -44,10 +41,6 @@ public class Store : MonoBehaviour
         RefreshData();
     }
 
-    public void Close()
-    {
-    }
-
     public void RefreshData()
     {
         storeCoinsNumberText.text = DataHolder.GetCurrentCoinsNumber().ToString();
@@ -56,8 +49,8 @@ public class Store : MonoBehaviour
 
     private void SetStoreMode()
     {
-        DesignMode currentDesignMode = DataHolder.GetCurrentDesignMode();
-        StoreModeFactory factory = GetStoreModeFactoryForDesignMode(currentDesignMode);
+        DesignMode currentDesignMode = SettingsManager.GetInstance().GetDesignSettings().GetDesignMode();
+        StoreDesignModeSettings factory = GetStoreModeFactoryForDesignMode(currentDesignMode);
 
         if (factory == null)
         {
@@ -67,11 +60,11 @@ public class Store : MonoBehaviour
         storeBackground.color = factory.GetBackgroundColor();
     }
 
-    private StoreModeFactory GetStoreModeFactoryForDesignMode(DesignMode designMode)
+    private StoreDesignModeSettings GetStoreModeFactoryForDesignMode(DesignMode designMode)
     {
-        foreach (StoreModeFactory factory in storeModeFactories)
+        foreach (StoreDesignModeSettings factory in storeModes)
         {
-            if (factory.GetСorrespondingDesignMode() == designMode)
+            if (factory.GetDesignMode() == designMode)
             {
                 return factory;
             }
@@ -88,13 +81,13 @@ public class Store : MonoBehaviour
         currentContentLocalScale.y = currentContentLocalScale.y * scaleFactor;
         storeItemListScrollViewContent.transform.localScale = currentContentLocalScale;
 
-        foreach (StoreItem item in itemList)
+        foreach (StoreItemSettings item in itemList)
         {
              DisplayItem(item);
         }
     }
 
-    private void DisplayItem(StoreItem item)
+    private void DisplayItem(StoreItemSettings item)
     {
         StoreItemVisualizer currentStoreItem = Instantiate(itemPanelPrefab, storeItemListScrollViewContent);
 

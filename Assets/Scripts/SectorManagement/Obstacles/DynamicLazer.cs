@@ -32,6 +32,16 @@ public class DynamicLazer : Obstacle
         lazerCollider.enabled = true;
     }
 
+    public void SetCautionSprite(Sprite sprite)
+    {
+        cautionSprite = sprite;
+    }
+
+    public void SetDangerSprite(Sprite sprite)
+    {
+        dangerSprite = sprite;
+    }
+
     //Take player's life
     protected override sealed void MakeImpact()
     {

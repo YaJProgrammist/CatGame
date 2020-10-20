@@ -16,9 +16,12 @@ class Boosted : PlayerMovingBehavior
 
     public Boosted(Rigidbody2D rigidbody) : base (rigidbody)
     {
-        velocityVector = new Vector2(10f, 0);
+        PlayerBoostedSettings settings = SettingsManager.GetInstance().GetPlayerSettings().GetMovingSettings().GetBoostedSettings();
+
+        float horizontalSpeed = settings.GetBoostSpeed();
+        velocityVector = new Vector2(horizontalSpeed, 0);
         currentRigidbody.velocity = velocityVector;
-        boostDistance = 100;
+        boostDistance = settings.GetBoostDistance();
         startX = rigidbody.transform.position.x;
     }
 

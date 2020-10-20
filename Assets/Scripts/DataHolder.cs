@@ -194,17 +194,6 @@ static class DataHolder
         return defaultItem;
     }
 
-    public static DesignMode GetCurrentDesignMode()
-    {
-        if (!PlayerPrefs.HasKey(designModeName))
-        {
-            PlayerPrefs.SetInt(designModeName, (int)DesignMode.Usual);
-            return DesignMode.Usual;
-        }
-
-        return (DesignMode)PlayerPrefs.GetInt(designModeName);
-    }
-
     //Builds key that contains value "if item is available"
     private static string GetAvailableKeyForItem(Item item)
     {
